@@ -1,0 +1,42 @@
+/* Recorders only. */
+.recorders-page .rec-equipment-selection{padding-block:64px}
+.recorders-page .rec-equipment-selection .selection-grid{gap:56px;align-items:start}
+.recorders-page .rec-equipment-selection h2{margin-bottom:24px}
+.recorders-page .rec-equipment-selection p{line-height:1.6}
+.recorders-page .rec-equipment-selection .section-label{font-size:12px;letter-spacing:1.8px;color:#647e91;gap:12px}
+.recorders-page .rec-equipment-selection .section-label::before{width:24px;height:2px}
+.recorders-page .rec-equipment-selection [role=status]{margin-top:16px;font-size:14px}
+@media(max-width:700px){.recorders-page .rec-equipment-selection{padding-block:44px}.recorders-page .rec-equipment-selection .selection-grid{gap:26px}}
+.recorders-page .rec-section{padding-block:64px}
+.recorders-page .rec-hero{gap:56px;padding-block:60px}
+.recorders-page .rec-brand{display:flex;align-items:center;gap:12px;font-size:14px;letter-spacing:1px}
+.recorders-page .rec-brand::before{content:'';width:24px;height:2px;background:var(--red)}
+.recorders-page .rec-hero figure{border-radius:24px 8px 8px 8px;background:#eaf1f6;padding:38px}
+.recorders-page .rec-features{gap:24px;padding-bottom:56px}
+.recorders-page .rec-features article{border-top:1px solid #bed1df;padding-top:24px}
+.recorders-page .rec-features svg{width:48px;height:48px;padding:11px;border-radius:12px;background:#e8f0f6;color:var(--blue)}
+.recorders-page .rec-features h3{min-height:0;font-size:18px}
+.recorders-page .rec-task-layout{gap:20px 26px;grid-template-columns:1fr .7fr 1fr;align-items:stretch}
+.recorders-page .rec-task{background:#fff;border:1px solid #dce6ee;border-radius:12px;padding:24px}
+.recorders-page .rec-task .polish-icon-badge{margin-bottom:18px}
+.recorders-page .rec-task h3{font-size:21px}
+.recorders-page .rec-task-device{padding:18px;border-radius:50%;background:#e6eef4;aspect-ratio:1;display:flex;align-items:center}
+.recorders-page .rec-types{gap:24px}
+.recorders-page .rec-types article{padding:24px;border:1px solid #dce6ee;border-radius:12px}
+.recorders-page .rec-type-image{border-radius:8px;background:#f4f7f9}
+.recorders-page .rec-types h3{margin-bottom:0}
+.recorders-page .rec-series-section{padding-top:0}
+.recorders-page .rec-series article{border-radius:12px;border-color:#d4e1eb;transition:background .18s}
+.recorders-page .rec-series article:hover{background:#f7fafc}
+.recorders-page .rec-series-image{padding:14px;background:#f2f6f8;border-radius:8px}
+.recorders-page .rec-catalog{padding-block:36px}
+.recorders-page .rec-certificates article{border:1px solid #dce6ee;border-radius:12px;background:#f7fafc}
+.recorders-page .rec-quality{padding-top:0}
+.recorders-page .rec-quality-heading{margin:44px 0 22px;padding-top:30px;border-top:1px solid #d4e1eb;font-size:26px}
+.recorders-page .rec-quality-layout{display:block}
+.recorders-page .rec-quality ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.recorders-page .rec-quality li{font-size:17px;line-height:1.6;margin:0;padding:22px;background:#f2f6f8;border-radius:8px;border-top:2px solid #b7cddb}
+.recorders-page .rec-selection>.wrap{gap:56px;align-items:start}
+@media(max-width:1050px){.recorders-page .rec-features{grid-template-columns:repeat(3,minmax(0,1fr))}.recorders-page .rec-task-layout{grid-template-columns:1fr 1fr}.recorders-page .rec-task-device{grid-column:1/-1;grid-row:1;max-width:220px;justify-self:center}.recorders-page .rec-task{grid-column:auto;grid-row:auto}}
+@media(max-width:760px){.recorders-page .rec-section{padding-block:46px}.recorders-page .rec-series-section,.recorders-page .rec-quality{padding-top:0}.recorders-page .rec-hero{padding-block:38px 44px;gap:28px}.recorders-page .rec-features{grid-template-columns:repeat(2,minmax(0,1fr))}.recorders-page .rec-task{padding:22px}.recorders-page .rec-types article{display:block}.recorders-page .rec-type-image{margin-bottom:22px}.recorders-page .rec-quality ul{grid-template-columns:1fr}.recorders-page .rec-selection>.wrap{gap:24px}}
+@media(max-width:540px){.recorders-page .rec-task-layout{grid-template-columns:1fr}.recorders-page .rec-features{grid-template-columns:1fr}.recorders-page .rec-features article{display:grid;grid-template-columns:48px minmax(0,1fr);gap:0 18px}.recorders-page .rec-features svg{grid-row:1/3}.recorders-page .rec-features p{grid-column:2}.recorders-page .rec-series article{display:flex}.recorders-page .rec-series-image{width:100%;height:150px}.recorders-page .rec-series-image img{max-height:130px}}

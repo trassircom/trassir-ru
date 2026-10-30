@@ -1,0 +1,31 @@
+/* Camera-page ecosystem transplanted into v1's compact content width.
+   Keep the reusable map and its interactions unchanged; scope shell styles here. */
+.home-page .hv-main .hv-ecosystem{padding-block:64px;background:var(--pale);font:16px/1.6 Arial,sans-serif}
+.home-page .hv-main .hv-ecosystem .section-label{margin:0 0 25px;font-size:12px;letter-spacing:1.8px;color:#647e91;gap:12px}
+.home-page .hv-main .hv-ecosystem .section-label::before{width:24px;height:2px}
+.home-page .hv-main .hv-ecosystem h2{font-size:36px;line-height:1.16;letter-spacing:-.6px;text-transform:uppercase;font-weight:700;margin:0 0 24px;text-wrap:initial}
+.home-page .hv-main .hv-ecosystem .ecosystem-grid{display:block}
+.home-page .hv-main .hv-ecosystem .eco-node{font-size:15px;font-weight:600;line-height:1.35;color:var(--eco-blue)}
+.home-page .hv-main .hv-ecosystem .eco-node img{border-radius:0}
+.home-page .hv-main .hv-ecosystem .eco-details h3{font-size:22px;line-height:1.35;font-weight:700;letter-spacing:-.6px;margin:0 0 10px;text-wrap:initial}
+.home-page .hv-main .hv-ecosystem .eco-details p{font-size:16px;line-height:1.6;margin:0}
+.home-page .hv-main .hv-ecosystem .eco-detail-link{font-size:15px;font-weight:600}
+.home-page .hv-main .hv-ecosystem .eco-close{font:24px/1 Arial,sans-serif}
+.home-page .hv-main .hv-ecosystem .eco-origin{font-size:15px;line-height:1.5;margin:20px 0 0}
+.home-page .hv-main .hv-ecosystem .camera-ecosystem-copy{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:36px}
+.home-page .hv-main .hv-ecosystem .camera-ecosystem-copy article{border-top:2px solid #b4c9d9;padding-top:22px}
+.home-page .hv-main .hv-ecosystem .camera-ecosystem-copy h3{font-size:22px;line-height:1.25;font-weight:700;letter-spacing:normal;margin:0 0 14px;text-wrap:initial}
+@media(max-width:1050px){
+ .home-page .hv-main .hv-ecosystem h2{font-size:30px}
+}
+@media(max-width:700px){
+ .home-page .hv-main .hv-ecosystem{padding-block:44px}
+ .home-page .hv-main .hv-ecosystem h2{font-size:28px}
+ .home-page .hv-main .hv-ecosystem .camera-ecosystem-copy{grid-template-columns:1fr;gap:24px}
+}
+@media(max-width:540px){
+ .home-page .hv-main .hv-ecosystem .eco-node{font-size:13px}
+ .home-page .hv-main .hv-ecosystem .eco-vms{font-size:15px}
+ .home-page .hv-main .hv-ecosystem .eco-details h3{font-size:20px}
+ .home-page .hv-main .hv-ecosystem .eco-details p{font-size:15px}
+}

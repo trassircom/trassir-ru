@@ -1,0 +1,21 @@
+/* Scoped reusable ecosystem, loaded only on requested pages. */
+.ecosystem-map{--eco-blue:#174e79;--eco-pale:#f2f6f8;--eco-line:#ccdbe6;margin-top:32px;color:#25465f}
+.ecosystem-map .eco-stage{position:relative;min-height:650px;border:1px solid var(--eco-line);border-radius:16px;background:#f7fafc;isolation:isolate}
+.ecosystem-map .eco-connectors{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.ecosystem-map .eco-node{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;width:23%;max-width:232px;min-height:156px;padding:17px 18px;background:white;border:1px solid var(--eco-line);border-radius:12px;transform:translate(-50%,-50%);text-align:center;text-decoration:none;color:var(--eco-blue);font-size:15px;font-weight:600;line-height:1.35;box-shadow:0 4px 14px #174e7905;transition:border-color .18s,box-shadow .18s}
+.ecosystem-map .eco-node img{display:block;width:112px;height:62px;object-fit:contain;mix-blend-mode:multiply}
+.ecosystem-map .eco-node:is(:hover,:focus-visible,.is-active){border-color:var(--eco-blue);box-shadow:0 4px 18px #174e7914}
+.ecosystem-map .eco-node:focus-visible{outline:3px solid #3289c4;outline-offset:4px}
+.ecosystem-map .eco-cameras{left:16%;top:16%}.ecosystem-map .eco-recorders{left:50%;top:16%}.ecosystem-map .eco-network{left:84%;top:16%}
+.ecosystem-map .eco-skud{left:16%;top:50%}.ecosystem-map .eco-cms{left:84%;top:50%}
+.ecosystem-map .eco-cloud{left:16%;top:84%}.ecosystem-map .eco-analytics{left:50%;top:84%}.ecosystem-map .eco-psim{left:84%;top:84%}
+.ecosystem-map .eco-vms{left:50%;top:50%;width:20%;max-width:200px;min-height:142px;padding:16px 12px;background:#e8f0f6;border-color:#7c9eb8}
+.ecosystem-map .eco-vms img{width:90px;height:48px}
+.ecosystem-map .eco-details{position:relative;display:flex;gap:24px;justify-content:space-between;padding:24px 28px;margin-top:18px;border-left:3px solid #d52228;border-radius:0 8px 8px 0;background:#e8f0f6}
+.ecosystem-map .eco-details[hidden]{display:none!important}.ecosystem-map .eco-details h3{font-size:22px;line-height:1.35;margin:0 0 10px;color:var(--eco-blue);text-transform:none}.ecosystem-map .eco-details p{font-size:16px;line-height:1.6;margin:0;max-width:920px}
+.ecosystem-map .eco-detail-link{display:inline-block;margin-top:14px;text-decoration:underline;text-underline-offset:4px;font-size:15px;font-weight:600}
+.ecosystem-map .eco-close{display:grid;place-items:center;flex-shrink:0;width:36px;height:36px;border:1px solid #b8ccdb;border-radius:6px;background:white;color:var(--eco-blue);font:24px/1 Arial;cursor:pointer}
+.ecosystem-map .eco-origin{font-size:15px;line-height:1.5;text-align:center;margin:20px 0 0;color:#526c80}
+@media(max-width:950px){.ecosystem-map .eco-stage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:24px;min-height:0}.ecosystem-map .eco-connectors{display:none}.ecosystem-map .eco-node{position:static;transform:none;width:auto;max-width:none;min-height:150px}.ecosystem-map .eco-vms{grid-column:1/-1;order:-1;min-height:130px;width:min(260px,100%);justify-self:center;position:relative;left:auto;top:auto}.ecosystem-map .eco-vms::after{content:'';position:absolute;top:100%;left:50%;height:21px;width:1px;background:var(--eco-line)}}
+@media(max-width:540px){.ecosystem-map .eco-stage{gap:12px;padding:14px}.ecosystem-map .eco-node{padding:16px 10px;min-height:150px;font-size:13px}.ecosystem-map .eco-node img{width:90px;height:54px}.ecosystem-map .eco-vms{font-size:15px}.ecosystem-map .eco-vms::after{height:13px}.ecosystem-map .eco-details{padding:20px;gap:12px}.ecosystem-map .eco-details h3{font-size:20px}.ecosystem-map .eco-details p{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.ecosystem-map .eco-node{transition:none}}

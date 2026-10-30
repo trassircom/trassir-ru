@@ -1,0 +1,10 @@
+/* Preserve the uploaded header's original appearance around the shared menu.
+   Content and responsive rules remain verbatim in pages/videoanalytics.html. */
+html.videoanalytics-document{scrollbar-gutter:auto}
+body.videoanalytics-page{min-width:0}
+.videoanalytics-page .header{position:sticky;top:0;z-index:50;background:var(--white);color:inherit;border:0;font:inherit;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.videoanalytics-page .header>.container{position:relative;z-index:3;background:var(--white)}
+.videoanalytics-page .header .menu-btn{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;font:500 14px var(--font-main);color:var(--ink);cursor:pointer;min-height:0;border-radius:0;box-shadow:none}
+.videoanalytics-page .header .phone{color:var(--ink)}
+.videoanalytics-page .header .cabinet{color:var(--main-darkness)}
+.videoanalytics-page .demo-nav{max-height:calc(100dvh - var(--header-h))}

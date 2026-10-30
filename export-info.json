@@ -1,0 +1,13 @@
+{
+  "version": 67,
+  "export_date": "2026-10-26",
+  "source_commit": "a362c415e9b1a243dbd1b355769541f7d0cd4c55",
+  "pages": 25,
+  "start_file": "index.html",
+  "purpose": "Offline desktop copy of the published TRASSIR demo site.",
+  "adaptations": [
+    "Site-root URLs converted to local relative paths.",
+    "Fonts embedded in stylesheets for local browser loading.",
+    "Demo forms remain local; outgoing requests and submission blocked."
+  ]
+}

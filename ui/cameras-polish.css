@@ -1,0 +1,38 @@
+/* Cameras only. */
+.cameras-page .hero{gap:52px;padding-block:60px}
+.cameras-page .hero-image{min-height:400px;border-radius:24px 8px 8px 8px;background:#eef4f8}
+.cameras-page .hero h1{font-size:clamp(36px,4vw,54px)}
+.cameras-page .highlights{gap:26px;padding-block:32px}
+.cameras-page .highlights>div{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.cameras-page .highlights p{font-size:15px;line-height:1.5;margin:0}
+.cameras-page .feature-icon{font-size:17px;height:auto;min-height:24px;font-weight:600;width:auto}
+.cameras-page .feature-icon>span{font-size:14px}
+.cameras-page .section{padding-block:64px}
+.cameras-page .section-label{font-size:12px;letter-spacing:1.8px;color:#647e91;gap:12px}
+.cameras-page .section-label::before{width:24px;height:2px}
+.cameras-page .business-tasks-list{gap:20px}
+.cameras-page .business-tasks-list li{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:18px;padding:26px;border:1px solid #d8e3ec;border-radius:12px;background:#f8fafc}
+.cameras-page .business-tasks-list li>.task-number{position:absolute;top:24px;right:24px;font-size:13px;line-height:1;color:#7c93a4}
+.cameras-page .business-tasks-list h3{font-size:21px;padding-right:20px}
+.cameras-page .business-tasks-list p{font-size:16px}
+.cameras-page .type{padding:20px;border:1px solid #dce6ed;border-radius:12px}
+.cameras-page .type-image{border-radius:8px}
+.cameras-page .type p{font-size:15px}
+.cameras-page .types-grid{gap:22px}
+.cameras-page .comparison{border-radius:12px}
+.cameras-page .comparison thead th{background:#eaf1f6}
+.cameras-page .certificate-grid article{background:#f2f6f8;border:1px solid #dce6ed;border-radius:12px;padding:28px}
+.cameras-page .product-visual{border-radius:16px;background:#f2f6f8}
+.cameras-page .advantage-row{gap:48px}
+.cameras-page .ecosystem-grid{display:block}
+.cameras-page .camera-ecosystem-copy{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:36px}
+.cameras-page .camera-ecosystem-copy article{border-top:2px solid #b4c9d9;padding-top:22px}
+.cameras-page .camera-ecosystem-copy h3{font-size:22px;margin-top:0}
+.cameras-page .quality{margin-top:44px;border-top:1px solid #d4e0e9;padding-top:36px}
+.cameras-page .quality ol{gap:24px}
+.cameras-page .quality li{background:#f2f6f8;border:0;border-radius:8px;padding:22px;gap:14px}
+.cameras-page .quality li span{font-size:20px}
+.cameras-page .selection-grid{gap:56px;align-items:start}
+@media(max-width:1050px){.cameras-page .highlights{grid-template-columns:repeat(3,minmax(0,1fr))}.cameras-page .hero{gap:30px}.cameras-page .business-tasks-list li{padding:22px;gap:14px}.cameras-page .types-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.cameras-page .advantage-row{gap:32px}}
+@media(max-width:700px){.cameras-page .hero{padding-block:38px 44px}.cameras-page .hero h1{font-size:clamp(30px,8vw,42px)}.cameras-page .hero-image{min-height:280px}.cameras-page .section{padding-block:44px}.cameras-page .highlights{grid-template-columns:repeat(2,minmax(0,1fr))}.cameras-page .business-tasks-list{grid-template-columns:1fr}.cameras-page .business-tasks-list li{padding:22px}.cameras-page .types-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cameras-page .type{padding:14px}.cameras-page .camera-ecosystem-copy{grid-template-columns:1fr;gap:24px}.cameras-page .selection-grid{gap:26px}.cameras-page .certificate-grid article{padding:22px}}
+@media(max-width:400px){.cameras-page .types-grid{grid-template-columns:1fr}.cameras-page .business-tasks-list li{grid-template-columns:1fr}.cameras-page .business-tasks-list h3{padding-right:0}}

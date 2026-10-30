@@ -1,0 +1,37 @@
+/* Opt-in page styling. No shared menu, footer or unselected route changes. */
+.page-refined main{--refined-soft:#f2f6f8;--refined-tint:#e8f0f6;--refined-line:#d4e1eb;--refined-dark:#153e5f}
+.page-refined main :is(h1,h2,h3,h4){text-transform:none;letter-spacing:-.025em;overflow-wrap:break-word}
+.page-refined main h1{font-weight:600;line-height:1.13}
+.page-refined main h2{font-size:clamp(28px,2.9vw,40px);font-weight:600;line-height:1.2}
+.page-refined main h3{font-weight:600}
+.page-refined main :is(section,article,figure,form,form>div){min-width:0}
+.page-refined main .button{border-radius:6px;font-weight:600;min-height:52px}
+.page-refined main .polish-icon-badge{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;flex-shrink:0;border-radius:12px;color:var(--blue);background:var(--refined-tint)}
+.page-refined main .polish-icon{display:block;width:26px;height:26px;flex-shrink:0;color:currentColor}
+.page-refined main .refined-contact{background:var(--refined-dark);color:#e0ebf3}
+.page-refined main .refined-contact h2{color:white}
+.page-refined main .refined-contact form{background:white;border:1px solid #d6e1e9;border-radius:12px;padding:30px;color:var(--ink);align-self:start}
+.page-refined main .refined-contact label{font-size:14px;line-height:1.5;color:var(--blue)}
+.page-refined main .refined-contact input,.page-refined main .refined-contact select{background:#f8fafc;border:1px solid #b7cad8;border-radius:6px;min-height:50px;font-size:16px}
+.page-refined main .refined-contact .button{width:100%;justify-content:center}
+.page-refined main .refined-contact [role=status]{color:var(--blue)}
+.page-refined main .refined-contact :is(.form-note,.rec-form-note,.sk-form-note,.net-form-note){color:#526c80}
+.page-refined main .production-copy h2{margin-bottom:24px}
+.page-refined main .production-copy .about-section-lead{font-size:20px;margin-bottom:32px}
+.page-refined main .production-copy .about-production-layout{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:56px}
+.page-refined main .production-copy figure{margin:0;border-radius:8px;overflow:hidden}
+.page-refined main .production-copy figure img{width:100%;height:auto;aspect-ratio:1.7;object-fit:cover;filter:brightness(1.4)}
+.page-refined main .production-copy .about-production-points article{display:flex;gap:20px;align-items:flex-start;margin-bottom:28px}
+.page-refined main .production-copy .about-icon{display:block;width:30px;height:30px;color:var(--blue);flex-shrink:0;margin-top:3px}
+.page-refined main .production-copy h3{font-size:24px;line-height:1.3;margin:0 0 13px}
+.page-refined main .production-copy p{line-height:1.65}
+.page-refined main .production-copy .about-text-link{display:inline-flex;gap:18px;align-items:center;padding:10px 0;border-bottom:1px solid #98b3c7;text-decoration:none;font-size:16px}
+.page-refined main .production-copy .about-text-link .about-icon{width:20px;height:20px;margin:0}
+.page-refined main .production-copy .about-production-features{margin-top:42px}
+.page-refined main .production-copy .about-production-features>p{max-width:1050px;font-size:17px}
+.page-refined main .production-copy .about-process-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px;margin-top:30px}
+.page-refined main .production-copy .about-process-list article{padding-top:22px;border-top:1px solid #aec4d4}
+.page-refined main .production-copy h4{font-size:20px;line-height:1.3;color:var(--blue);margin:0 0 14px}
+@media(max-width:1050px){.page-refined main .production-copy .about-production-layout{gap:30px}}
+@media(max-width:760px){.page-refined main .production-copy .about-production-layout{grid-template-columns:1fr}.page-refined main .production-copy .about-process-list{gap:24px}.page-refined main .refined-contact form{padding:24px}}
+@media(max-width:540px){.page-refined main .production-copy .about-process-list{grid-template-columns:1fr}.page-refined main .production-copy .about-section-lead{font-size:18px}.page-refined main .production-copy h3{font-size:22px}.page-refined main .refined-contact form{padding:22px}}

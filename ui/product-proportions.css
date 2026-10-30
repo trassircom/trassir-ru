@@ -1,0 +1,128 @@
+/* Desktop dimensions only, following home v1/v2's 1100px content grid.
+   Content, block order, grid columns, colors, fonts and mobile rules are retained. */
+@media (min-width:1001px) {
+  body.product-compact main .wrap,
+  body.product-compact main .solution-selection .wrap,
+  body.product-compact .demo-header__inner,
+  body.product-compact .demo-menu-grid,
+  body.product-compact .camera-footer .wrap {
+    width:min(1100px,calc(100% - 64px));
+    margin-inline:auto;
+  }
+  body.product-compact.videoanalytics-page .container {
+    width:min(1100px,calc(100% - 64px));
+    max-width:1100px;
+    padding-inline:0;
+  }
+  body.product-compact .demo-header__inner { min-height:80px; padding-inline:0; gap:56px; }
+  body.product-compact .demo-menu-grid { padding-inline:0; gap:32px; }
+
+  body.product-compact:not(.videoanalytics-page) main h1 { font-size:42px; }
+  body.product-compact main h2:not(.rec-features-title),
+  body.product-compact main .refined-contact h2 { font-size:32px; margin-bottom:24px; }
+  body.product-compact main :is(.section,.rec-section,.sk-section,.net-section,.vms-section,.cms-section,.psim-section,.cloud-section),
+  body.product-compact main .solution-selection { padding-block:48px; }
+  body.product-compact main :is(.rec-series-section,.rec-quality,.sk-equipment,.sk-support,.net-benefits,.cms-operation,.cms-cases) { padding-top:0; }
+  body.product-compact main :is(.hero,.rec-hero,.sk-hero,.net-hero,.vms-hero,.cms-hero,.psim-hero,.cloud-hero) { padding-block:44px; gap:40px; }
+  body.product-compact main :is(.sk-hero,.cms-hero,.cloud-hero) p,
+  body.product-compact main .vms-hero-copy>p:not(.vms-eyebrow) { font-size:18px; }
+  body.product-compact main :is(.vms-hero,.cms-hero,.psim-hero) .button { margin-top:24px; }
+  body.product-compact main .button { min-height:48px; padding:12px 20px; }
+  body.product-compact main .refined-contact .selection-grid { gap:40px; }
+  body.product-compact main .refined-contact form { padding:26px; }
+  body.product-compact main .refined-contact .form-grid { gap:20px 18px; }
+
+  /* Cameras: reduce the oversized images and section spacing. */
+  body.product-compact.cameras-page .hero-image { min-height:340px; padding:24px; }
+  body.product-compact.cameras-page .highlights { padding-block:26px; gap:22px; }
+  body.product-compact.cameras-page .business-tasks-list li { padding:22px; gap:16px; }
+  body.product-compact.cameras-page .certificate-grid { gap:24px; margin-top:32px; }
+  body.product-compact.cameras-page .certificate-grid article { padding:24px; gap:24px; }
+  body.product-compact.cameras-page .advantage-row { gap:40px; margin-top:40px; }
+  body.product-compact.cameras-page .product-visual { height:330px; padding:22px; }
+  body.product-compact.cameras-page .production-heading { gap:40px; padding-bottom:40px; }
+  body.product-compact.cameras-page .quality { margin-top:32px; padding-top:28px; }
+  body.product-compact.cameras-page .quality ol { margin-top:28px; gap:20px; }
+  body.product-compact.cameras-page .catalog { padding-block:32px; }
+
+  /* Recorders and network equipment retain their existing card arrangements. */
+  body.product-compact.recorders-page .rec-hero figure { height:260px; padding:30px; }
+  body.product-compact main :is(.rec-features,.net-features) { padding-bottom:44px; gap:20px; }
+  body.product-compact main :is(.rec-task,.rec-types article,.rec-series article,.net-features article,.net-task-grid article,.net-products article) { padding:22px; }
+  body.product-compact.recorders-page .rec-type-image { height:200px; padding:22px; margin-bottom:20px; }
+  body.product-compact.recorders-page .rec-catalog { padding-block:28px; }
+  body.product-compact.recorders-page .rec-certificates { gap:28px; }
+  body.product-compact.recorders-page .rec-certificates article { padding:26px; }
+  body.product-compact.recorders-page .rec-quality-layout { gap:40px; }
+  body.product-compact.recorders-page .rec-quality-heading { margin-top:32px; padding-top:24px; font-size:23px; }
+  body.product-compact.network-page .net-hero figure { min-height:270px; padding:36px 28px; }
+  body.product-compact.network-page .net-products figure { height:170px; margin-bottom:22px; }
+  body.product-compact.network-page .net-benefit-list article { gap:36px; padding-block:24px; }
+
+  /* Access control. */
+  body.product-compact.skud-page .sk-tabs { margin-bottom:24px; }
+  body.product-compact.skud-page .sk-tabs button { min-height:80px; padding:16px 18px; gap:12px; }
+  body.product-compact.skud-page .sk-panel { padding:26px; gap:30px; }
+  body.product-compact.skud-page .sk-panel h3 { font-size:23px; margin-bottom:18px; }
+  body.product-compact.skud-page .sk-integrated { gap:36px; margin-bottom:32px; }
+  body.product-compact.skud-page .sk-integrated h3 { font-size:24px; }
+  body.product-compact.skud-page .sk-system { padding:26px; }
+  body.product-compact.skud-page .sk-capabilities { gap:20px; }
+  body.product-compact.skud-page .sk-capabilities article { padding:22px; }
+  body.product-compact.skud-page .sk-products { gap:20px; }
+  body.product-compact.skud-page .sk-products article { padding:18px; }
+  body.product-compact.skud-page .sk-products figure { height:155px; }
+  body.product-compact.skud-page .sk-support>.wrap { gap:40px; }
+  body.product-compact main :is(.sk-catalog,.net-catalog) { padding:26px; gap:32px; margin-top:28px; }
+
+  /* VMS, CMS and PSIM. */
+  body.product-compact main :is(.vms-compat-grid article,.cms-audience article,.cms-install-grid article,.cms-license-grid article) { padding:24px; }
+  body.product-compact.vms-page .vms-hardware-visual { min-height:175px; height:180px; padding:16px; }
+  body.product-compact.vms-page .vms-os-list li { padding:22px 14px; gap:18px; }
+  body.product-compact.vms-page .vms-functions li { min-height:100px; padding:20px; gap:14px; font-size:17px; }
+  body.product-compact.vms-page .vms-section-lead { font-size:18px; margin-bottom:28px; }
+  body.product-compact.vms-page .vms-extension { gap:40px; padding-block:30px; }
+  body.product-compact.vms-page .vms-extension:last-child { padding-bottom:0; }
+  body.product-compact.vms-page .vms-extension h3 { font-size:24px; margin-bottom:18px; }
+  body.product-compact.vms-page .vms-extension figure { padding:20px; }
+  body.product-compact.vms-page .vms-cert-layout { gap:40px; }
+  body.product-compact.vms-page .vms-development li { padding:20px; }
+  body.product-compact.cms-page .cms-functions li { padding:20px; gap:16px; }
+  body.product-compact.cms-page .cms-functions li p { font-size:17px; }
+  body.product-compact.cms-page :is(.cms-audience,.cms-license-grid) h3 { font-size:23px; }
+  body.product-compact.cms-page .cms-diagram { padding:28px; }
+  body.product-compact.cms-page .cms-cases .wrap>article { padding:24px; gap:36px; }
+  body.product-compact.cms-page .cms-license-notes { padding:22px 24px; }
+  body.product-compact main :is(.psim-feature-list li,.psim-task-list li,.psim-benefits li) { padding:22px; }
+  body.product-compact.psim-page .psim-report-layout { gap:40px; }
+  body.product-compact.psim-page .psim-flow { padding:26px; }
+  body.product-compact.psim-page .psim-flow-node { min-height:150px; padding:22px; }
+  body.product-compact.psim-page .psim-license-grid { gap:36px; }
+  body.product-compact.psim-page .psim-license-grid>div { padding:24px; }
+
+  /* Cloud: same blocks and image ratios, less empty space. */
+  body.product-compact.cloud-page .cloud-facts { padding:26px; margin-bottom:44px; }
+  body.product-compact.cloud-page .cloud-facts>div { padding-inline:24px; }
+  body.product-compact.cloud-page .cloud-facts dt { font-size:34px; }
+  body.product-compact.cloud-page .cloud-lead { font-size:17px; margin-bottom:26px; }
+  body.product-compact.cloud-page .cloud-ecosystem { padding-inline:26px; }
+  body.product-compact.cloud-page .cloud-ecosystem-row { padding-block:28px; gap:32px; }
+  body.product-compact.cloud-page .cloud-features li { padding:20px; }
+  body.product-compact.cloud-page .cloud-options-grid { gap:36px; }
+  body.product-compact.cloud-page .cloud-options-list li { padding:18px; }
+  body.product-compact.cloud-page .cloud-tariff-group h3 { padding:22px 24px; font-size:23px; }
+  body.product-compact.cloud-page .cloud-tariff-row dt { padding:20px 24px 0; }
+  body.product-compact.cloud-page .cloud-tariff-row dd { padding:18px 24px 24px; }
+  body.product-compact.cloud-page .cloud-industry-grid h3 { padding:20px; font-size:21px; }
+  body.product-compact.cloud-page .cloud-steps li { padding-top:64px; }
+
+  /* The imported analytics page keeps its typography and original shell. */
+  body.product-compact.videoanalytics-page main .hero { padding:40px; gap:36px; }
+  body.product-compact.videoanalytics-page main .hero .slogan { font-size:40px; margin-bottom:18px; }
+  body.product-compact.videoanalytics-page .card { padding:20px; }
+  body.product-compact.videoanalytics-page .psim { padding:28px 30px; gap:32px; margin-top:34px; }
+  body.product-compact.videoanalytics-page .custom { gap:36px; }
+  body.product-compact.videoanalytics-page .demo { padding:36px; }
+  body.product-compact.videoanalytics-page .partners { padding:28px 32px; }
+  body.product-compact.videoanalytics-page .footer { margin-top:56px; }
+}

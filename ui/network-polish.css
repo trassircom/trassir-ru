@@ -1,0 +1,39 @@
+/* Network equipment only. */
+.network-page .net-equipment-selection{padding-block:64px}
+.network-page .net-equipment-selection .selection-grid{gap:56px;align-items:start}
+.network-page .net-equipment-selection h2{margin-bottom:24px}
+.network-page .net-equipment-selection p{line-height:1.6}
+.network-page .net-equipment-selection .section-label{font-size:12px;letter-spacing:1.8px;color:#647e91;gap:12px}
+.network-page .net-equipment-selection .section-label::before{width:24px;height:2px}
+.network-page .net-equipment-selection [role=status]{margin-top:16px;font-size:14px}
+@media(max-width:700px){.network-page .net-equipment-selection{padding-block:44px}.network-page .net-equipment-selection .selection-grid{gap:26px}}
+.network-page .net-section{padding-block:64px}
+.network-page .net-hero{padding-block:60px;gap:56px}
+.network-page .net-hero figure{background:#e8f0f6;border-radius:24px 8px 8px 8px;padding:48px 32px;min-height:320px}
+.network-page .net-hero h1{font-size:clamp(34px,3.5vw,48px)}
+.network-page .net-features{grid-template-columns:repeat(6,minmax(0,1fr));gap:22px;padding-bottom:56px}
+.network-page .net-features article{grid-column:span 2;border:1px solid #d7e3ec;border-radius:12px;padding:26px;background:#f7fafc}
+.network-page .net-features article:nth-child(n+4){grid-column:span 3}
+.network-page .net-features .polish-icon-badge{margin-bottom:20px}
+.network-page .net-features h3{font-size:21px;line-height:1.3;margin-bottom:14px}
+.network-page .net-task-grid{gap:22px}
+.network-page .net-task-grid article{display:grid;grid-template-columns:48px minmax(0,1fr);gap:0 18px;border:1px solid #dce6ed;border-radius:12px;padding:26px;background:white}
+.network-page .net-task-grid .polish-icon-badge{grid-row:1/3}
+.network-page .net-task-grid h3{font-size:21px;line-height:1.35;margin-bottom:12px}
+.network-page .net-task-grid p{grid-column:2;font-size:16px}
+.network-page .net-products{gap:24px}
+.network-page .net-products article{padding:26px;border-radius:12px;border-color:#d4e1eb;transition:border-color .18s,background .18s}
+.network-page .net-products article:hover{background:#f7fafc;border-color:#9cb8cd}
+.network-page .net-products figure{background:#f4f7fa;padding:20px;border-radius:8px}
+.network-page .net-products img{mix-blend-mode:multiply}
+.network-page .net-catalog{border-radius:12px}
+.network-page .net-benefits{padding-top:0}
+.network-page .net-benefit-list article{gap:48px;padding:28px 0;align-items:start}
+.network-page .net-benefit-list h3{display:flex;gap:18px;align-items:flex-start;font-size:22px}
+.network-page .net-benefit-list .polish-icon-badge{width:44px;height:44px;border-radius:10px}
+.network-page .net-benefit-list p{padding-top:4px}
+.network-page .net-selection>.wrap{gap:56px;align-items:start}
+@media(max-width:1050px){.network-page .net-hero{gap:32px}.network-page .net-features article{padding:24px}.network-page .net-task-grid article{padding:24px}.network-page .net-benefit-list article{gap:30px}}
+@media(max-width:760px){.network-page .net-section{padding-block:46px}.network-page .net-benefits{padding-top:0}.network-page .net-hero{padding-block:38px 44px;gap:28px}.network-page .net-hero figure{min-height:240px;padding:32px}.network-page .net-features{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.network-page .net-features article,.network-page .net-features article:nth-child(n+4){grid-column:auto}.network-page .net-task-grid{grid-template-columns:1fr}.network-page .net-benefit-list article{grid-template-columns:1fr;gap:16px}.network-page .net-benefit-list p{padding-left:62px;padding-top:0}.network-page .net-selection>.wrap{gap:24px}}
+@media(max-width:480px){.network-page .net-features{grid-template-columns:1fr}.network-page .net-features article{padding:24px}.network-page .net-task-grid article{padding:22px;gap:0 14px;grid-template-columns:40px minmax(0,1fr)}.network-page .net-task-grid .polish-icon-badge{width:40px;height:40px}.network-page .net-task-grid h3{font-size:20px}.network-page .net-products article{padding:22px}.network-page .net-catalog{padding:24px}.network-page .net-hero h1{font-size:32px}}
+@media(prefers-reduced-motion:reduce){.network-page .net-products article{transition:none}}

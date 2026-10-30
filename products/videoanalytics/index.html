@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ru" class="videoanalytics-document">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' file: data:; script-src 'self' file: 'unsafe-inline' 'unsafe-eval'; style-src 'self' file: 'unsafe-inline'; img-src 'self' file: data: blob:; font-src 'self' file: data:; connect-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'self' file:"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Видеоаналитика TRASSIR: модули, цены, проверка на своём видео</title>
+<meta name="description" content="Видеоаналитика TRASSIR для охраны, магазинов, складов и производства. Проверка детекторов на своей записи в Live Demo.">
+<style>
+/* Токены сняты из CSS trassir.ru (:root шаблона сайта) */
+:root{
+  --font-main:"Montserrat",Arial,sans-serif;
+  --font-second:"Roboto",Arial,sans-serif;
+  --white:#FFFFFF;
+  --main-light:#EAF4FF;
+  --main-lighter:#F0F7FF;
+  --main-darkness:#104379;
+  --main-mid:#1F62A8;
+  --main-accent:#5897FB;
+  --main-pale:#BDDDFF;
+  --conv-light:#E43F41;
+  --conv-dark:#DB1719;
+  --neutral:#8D8D8D;
+  --neutral-dark:#313131;
+  --ink:#181818;
+  --line:#DCDCDC;
+  --footer:#E9F4FF;
+  --radius:5px;
+  --radius-lg:10px;
+  --shadow:0 4px 18px rgba(0,0,0,.08);
+  --header-h:76px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font-second);font-size:15px;line-height:1.55}
+img,svg{max-width:100%}
+a{color:inherit}
+[hidden]{display:none!important}
+.container{max-width:1140px;margin:0 auto;padding:0 16px}
+section[id]{scroll-margin-top:calc(var(--header-h) + 12px)}
+
+/* ── Шапка сайта ── */
+.header{position:sticky;top:0;z-index:50;background:var(--white);box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.header .container{height:var(--header-h);display:flex;align-items:center;gap:28px}
+.logo{display:block;width:156px;height:36px;flex-shrink:0}
+.menu-btn{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;font:500 14px var(--font-main);color:var(--ink);cursor:pointer}
+.menu-btn i{display:flex;flex-direction:column;justify-content:space-between;width:20px;height:14px}
+.menu-btn i b{display:block;height:2px;background:var(--main-darkness);border-radius:1px}
+.menu-btn i b:nth-child(2){width:70%}
+.menu-btn i b:nth-child(3){width:85%}
+.search{flex:1;max-width:430px;display:flex;align-items:center;border:1px solid var(--line);border-radius:var(--radius);height:42px;padding:0 12px;color:var(--neutral);font-size:13px;gap:8px}
+.search span{flex:1}
+.phone{font:500 14px var(--font-main);color:var(--ink);text-decoration:none;white-space:nowrap;margin-left:auto}
+.cabinet{display:flex;align-items:center;gap:8px;background:var(--main-light);color:var(--main-darkness);border-radius:var(--radius);padding:9px 16px;font:500 13px var(--font-main);text-decoration:none;white-space:nowrap}
+
+.crumbs{font-size:12px;color:var(--neutral);padding:14px 0 18px}
+.crumbs a{color:var(--neutral);text-decoration:none}
+.crumbs span{margin:0 8px}
+
+/* ── Типографика разделов (как на trassir.ru) ── */
+.eyebrow{font:500 12px var(--font-main);letter-spacing:.42em;text-transform:uppercase;color:var(--neutral);margin:0 0 14px}
+.section-title{font:700 36px/1.11 var(--font-main);text-transform:uppercase;color:var(--main-darkness);margin:0 0 16px}
+.lead{font-size:16px;color:var(--neutral-dark);max-width:760px;margin:0 0 32px}
+.section{padding:72px 0}
+.section.tint{background:linear-gradient(180deg,var(--main-lighter) 0%,var(--white) 100%)}
+
+/* ── Кнопки ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:12px 26px;border-radius:var(--radius);
+  font:500 14px var(--font-main);text-decoration:none;cursor:pointer;border:1px solid var(--conv-dark);background:var(--conv-dark);color:var(--white);transition:background .2s,border-color .2s}
+.btn:hover{background:var(--conv-light);border-color:var(--conv-light)}
+.btn svg{width:7px;height:12px;flex-shrink:0}
+.btn-empty{background:var(--white);color:var(--conv-dark)}
+.btn-empty:hover{background:#FFF3F3;color:var(--conv-dark);border-color:var(--conv-dark)}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px}
+
+/* ── Первый экран ── */
+.hero{border-radius:var(--radius-lg);overflow:hidden;position:relative;
+  background:
+    radial-gradient(80% 120% at 100% 0%,rgba(88,151,251,.30) 0%,transparent 60%),
+    linear-gradient(105deg,#F4F9FF 0%,var(--main-light) 45%,#D5E8FF 100%);
+  padding:56px 56px 52px;display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center}
+.hero .kicker{font:500 15px/1.4 var(--font-main);letter-spacing:.14em;color:var(--conv-dark);margin:0 0 16px}
+.hero .slogan{font:700 44px/1.1 var(--font-main);color:var(--main-darkness);margin:0 0 18px}
+.hero .sub{font-size:18px;line-height:1.5;color:var(--neutral-dark);margin:0 0 22px}
+.hero ul{list-style:none;margin:0 0 30px;padding:0;display:grid;gap:10px}
+.hero li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px;color:var(--ink)}
+.hero li svg{width:20px;height:20px;margin-top:1px}
+
+/* Схематичный кадр с детекциями: рисуется, а не фотография — видно, что это макет */
+.shot{position:relative}
+.frame{position:relative;aspect-ratio:16/10;border-radius:var(--radius-lg);overflow:hidden;background:#081726;box-shadow:0 14px 34px rgba(16,67,121,.28)}
+.frame-scene{position:absolute;inset:0;background:radial-gradient(120% 80% at 30% 0%,rgba(88,151,251,.18) 0%,transparent 60%),linear-gradient(180deg,#123150 0%,#0C2137 50%,#081726 100%)}
+.frame-scene.day{background:radial-gradient(120% 90% at 70% 0%,rgba(234,244,255,.30) 0%,transparent 60%),linear-gradient(180deg,#5D7088 0%,#4A5A6E 48%,#3B4757 100%)}
+.frame-grid{position:absolute;inset:0;opacity:.2;background-image:repeating-linear-gradient(90deg,rgba(189,221,255,.55) 0 1px,transparent 1px 78px),repeating-linear-gradient(0deg,rgba(189,221,255,.35) 0 1px,transparent 1px 54px);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 58%);mask-image:linear-gradient(180deg,transparent 0%,#000 58%)}
+.fence{position:absolute;left:0;right:0;top:40%;height:22%;border-top:2px solid rgba(189,221,255,.45);
+  background:repeating-linear-gradient(90deg,rgba(189,221,255,.28) 0 2px,transparent 2px 24px)}
+.frame-hud{position:absolute;left:13px;top:11px;font:500 11px var(--font-second);color:rgba(255,255,255,.88);letter-spacing:.02em}
+.frame-ts{position:absolute;right:13px;bottom:11px;font:400 11px var(--font-second);color:rgba(255,255,255,.66)}
+.zone{position:absolute;border:1.5px dashed rgba(189,221,255,.75);border-radius:4px;background:rgba(88,151,251,.10)}
+.zone-tag{position:absolute;left:7px;bottom:5px;font:600 10px var(--font-main);color:rgba(234,244,255,.92)}
+.bbox{position:absolute;border:2px solid #FF4D4F;border-radius:3px}
+.bbox-tag{position:absolute;left:-2px;bottom:100%;margin-bottom:4px;background:#FF4D4F;color:#fff;font:700 10px var(--font-main);padding:2px 6px;border-radius:3px;white-space:nowrap}
+.bbox svg{position:absolute;inset:6% 12%;width:76%;height:88%}
+.event{position:absolute;right:-22px;bottom:-36px;width:min(272px,62%);background:var(--white);border-radius:var(--radius-lg);box-shadow:0 12px 30px rgba(16,67,121,.22);padding:14px 16px}
+.event-kind{display:inline-block;font:600 11px var(--font-main);color:var(--white);background:var(--conv-dark);border-radius:999px;padding:3px 10px;margin-bottom:8px}
+.event b{display:block;font:600 14px/1.35 var(--font-main);color:var(--ink);margin-bottom:6px}
+.event p{margin:0;font-size:12.5px;color:var(--neutral-dark);line-height:1.5}
+.event .to{color:var(--main-mid);font-weight:500}
+
+/* ── Полоса фактов ── */
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:34px;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+.fact{padding:24px 26px}
+.fact + .fact{box-shadow:inset 1px 0 0 #E7EEF7}
+.fact-num{font:700 30px/1.1 var(--font-main);color:var(--main-darkness);margin-bottom:6px;white-space:nowrap}
+.fact-cap{font-size:13.5px;color:var(--neutral-dark);line-height:1.45}
+
+/* ── Вкладки задач ── */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.tab{flex-shrink:0;border:0;cursor:pointer;border-radius:var(--radius);padding:11px 18px;font:500 14px var(--font-main);background:var(--main-light);color:var(--main-darkness);transition:background .2s,color .2s}
+.tab:hover{background:#DCECFF}
+.tab[aria-selected="true"]{background:var(--main-darkness);color:var(--white)}
+.tab:focus-visible,.btn:focus-visible,.ind:focus-visible,summary:focus-visible{outline:2px solid var(--main-accent);outline-offset:2px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:18px}
+.card{display:flex;flex-direction:column;background:linear-gradient(180deg,var(--main-light) 0%,#E1EEFF 100%);border-radius:var(--radius);padding:24px 24px 20px;min-height:100%}
+.card h3{font:600 17px/1.3 var(--font-main);color:var(--ink);margin:0 0 10px}
+.card p{margin:0 0 16px;font-size:14.5px;color:var(--neutral-dark)}
+.card .mod{margin-top:auto;padding-top:14px;box-shadow:inset 0 1px 0 rgba(16,67,121,.12);font:600 13px/1.45 var(--font-main);color:var(--main-darkness)}
+.card .mod .nm{display:block}
+.card .mod .pr{display:block;font:400 13px/1.45 var(--font-second);color:var(--neutral-dark)}
+.card .foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:14px}
+.more{display:inline-flex;align-items:center;gap:8px;font:500 13px var(--font-main);color:var(--conv-dark);text-decoration:none}
+.more svg{width:6px;height:10px}
+.badge{display:inline-block;font:500 11px var(--font-main);color:var(--main-mid);background:var(--white);border:1px solid var(--main-pale);border-radius:999px;padding:3px 10px;white-space:nowrap}
+
+/* ── Как это работает ── */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;position:relative}
+.step{position:relative;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 18px 20px}
+.step-n{font:700 13px var(--font-main);color:var(--main-accent);letter-spacing:.06em;margin-bottom:12px}
+.step h3{font:600 15.5px/1.3 var(--font-main);color:var(--main-darkness);margin:0 0 8px}
+.step p{margin:0;font-size:13.5px;color:var(--neutral-dark);line-height:1.5}
+.step.hot h3{color:var(--conv-dark)}
+.step + .step::before{content:"";position:absolute;left:-12px;top:30px;width:10px;height:10px;border-top:2px solid var(--main-accent);border-right:2px solid var(--main-accent);transform:translateX(-2px) rotate(45deg)}
+.steps-note{margin:22px 0 0;font:500 15px var(--font-main);color:var(--main-darkness)}
+.where-title{font:600 18px var(--font-main);color:var(--ink);margin:46px 0 16px}
+.where{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.where-card{background:var(--main-light);border-radius:var(--radius);padding:22px 22px 20px;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.where-card svg{width:44px;height:44px}
+.where-card h4{font:600 16px var(--font-main);color:var(--main-darkness);margin:2px 0 6px}
+.where-card p{margin:0;font-size:14px;color:var(--neutral-dark)}
+
+/* ── Линейки видеорегистраторов ── */
+.lines{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.line-card{display:flex;flex-direction:column;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.line-img{display:flex;align-items:center;justify-content:center;height:150px;padding:18px 22px;background:var(--white);box-shadow:inset 0 -1px 0 #E7EEF7}
+.line-img img{max-width:100%;max-height:100%;object-fit:contain}
+.line-body{display:flex;flex-direction:column;gap:10px;padding:20px 22px 22px;flex:1}
+.line-body h4{font:600 17px/1.3 var(--font-main);color:var(--main-darkness);margin:0}
+.line-body p{margin:0;font-size:14px;color:var(--neutral-dark)}
+.line-body .line-va{color:var(--ink)}
+.line-body .more{margin-top:auto;padding-top:6px}
+.cam-note{margin:18px 0 0;font-size:14px;color:var(--neutral-dark);max-width:900px}
+
+/* ── PSIM, видеорегистраторы, экосистема ── */
+.step.hot h3{color:var(--conv-dark)}
+.psim{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;margin-top:44px;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:34px 36px}
+.psim h3{font:700 22px/1.25 var(--font-main);color:var(--main-darkness);margin:0 0 12px}
+.psim p{margin:0 0 12px;color:var(--neutral-dark)}
+.psim .psim-int{font-size:13.5px;margin-bottom:22px}
+.incident{background:var(--white);border-radius:var(--radius-lg);box-shadow:0 12px 30px rgba(16,67,121,.18);padding:16px 18px;border:1px solid #E7EEF7}
+.inc-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px}
+.inc-head .event-kind{margin:0}
+.inc-prio{font:600 11px var(--font-main);color:var(--conv-dark)}
+.incident b{display:block;font:600 15px/1.3 var(--font-main);color:var(--ink)}
+.inc-meta{margin:4px 0 10px!important;font-size:12.5px;color:var(--neutral)!important}
+.inc-video{position:relative;aspect-ratio:16/8;border-radius:6px;overflow:hidden;background:#081726}
+.inc-cam{position:absolute;left:8px;top:6px;font:500 10.5px var(--font-second);color:rgba(255,255,255,.85)}
+.inc-steps{margin:12px 0 6px;padding-left:20px;font-size:13px;color:var(--ink);display:grid;gap:4px}
+.inc-foot{margin:0!important;font-size:11.5px;color:var(--neutral)!important}
+.rec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;margin:46px 0 16px}
+.rec-head .where-title{margin:0 0 4px}
+.rec-lead{margin:0;font-size:14px;color:var(--neutral-dark)}
+.recs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.rec{display:flex;flex-direction:column;gap:6px;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px 18px;text-decoration:none;transition:transform .2s}
+.rec:hover{transform:translateY(-2px)}
+.rec-img{display:flex;align-items:center;justify-content:center;height:84px;margin-bottom:6px}
+.rec-img img{max-height:100%;max-width:100%;object-fit:contain}
+.rec-name{font:600 15.5px var(--font-main);color:var(--main-darkness)}
+.rec-text{font-size:13.5px;line-height:1.45;color:var(--neutral-dark)}
+.ecos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:4px}
+.eco{display:flex;flex-direction:column;gap:8px;background:linear-gradient(160deg,var(--main-light) 0%,#DCEBFF 100%);border-radius:var(--radius);padding:20px 20px 22px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.eco:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.eco svg{width:40px;height:40px;fill:none;stroke:var(--main-darkness);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.eco svg .acc{stroke:var(--conv-dark)}
+.eco svg .dot{fill:var(--conv-dark);stroke:none}
+.eco-name{font:600 16px/1.3 var(--font-main);color:var(--main-darkness)}
+.eco-text{font-size:13.5px;line-height:1.45;color:var(--neutral-dark)}
+.eco-note{margin:20px 0 0;font-size:14px;color:var(--neutral-dark);max-width:900px}
+
+/* ── Почему TRASSIR ── */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.why-card{position:relative;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px 22px 24px}
+.why-n{position:absolute;right:18px;top:16px;font:500 13px var(--font-main);color:#AAB7C6}
+.why-card h3{font:600 16.5px/1.3 var(--font-main);color:var(--ink);margin:0 0 10px;padding-right:26px}
+.why-card p{margin:0;font-size:14px;color:var(--neutral-dark)}
+
+/* ── Кейсы ── */
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.case{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
+.case-num{font:700 46px/1 var(--font-main);color:var(--main-darkness);white-space:nowrap}
+.case-num small{display:block;font:500 12.5px/1.35 var(--font-second);color:var(--neutral-dark);margin-top:8px;max-width:130px;white-space:normal}
+.case h3{font:600 17px/1.3 var(--font-main);margin:0 0 4px}
+.case .who{font-size:13px;color:var(--neutral);margin:0 0 10px}
+.case p{margin:0 0 14px;font-size:14.5px;color:var(--neutral-dark)}
+
+/* ── Детектор под задачу ── */
+.custom{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.custom p{font-size:16px;color:var(--neutral-dark);margin:0 0 26px}
+.spill{position:absolute;left:30%;top:56%;width:34%;height:24%}
+
+/* ── Live Demo ── */
+.demo{background:
+    radial-gradient(70% 120% at 100% 0%,rgba(88,151,251,.35) 0%,transparent 60%),
+    linear-gradient(120deg,#0E3A69 0%,var(--main-darkness) 55%,#1A4F8A 100%);color:var(--white);border-radius:var(--radius-lg);padding:56px}
+.demo .eyebrow{color:var(--main-pale)}
+.demo .section-title{color:var(--white)}
+.demo .demo-lead{color:#E6F0FF;margin:0}
+.demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:30px 0 28px}
+.demo-step{background:rgba(255,255,255,.08);border:1px solid rgba(189,221,255,.22);border-radius:var(--radius);padding:22px}
+.demo-step .step-n{color:var(--main-pale)}
+.demo-step p{margin:0;font-size:15px;color:#E6F0FF}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px;padding:0;list-style:none}
+.chips li{font-size:13px;color:#E6F0FF;border:1px solid rgba(189,221,255,.35);border-radius:999px;padding:5px 12px}
+
+/* ── Отрасли ── */
+.inds{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.ind{display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:118px;background:linear-gradient(160deg,var(--main-light) 0%,#D3E7FF 100%);border-radius:var(--radius);padding:18px;text-decoration:none;color:var(--main-darkness);font:600 14px/1.35 var(--font-main);transition:transform .2s,box-shadow .2s}
+.ind:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.ind svg{width:22px;height:22px;align-self:flex-end}
+
+/* ── Проектировщикам ── */
+.partners{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:34px 40px}
+.partners h3{font:700 22px var(--font-main);color:var(--main-darkness);margin:0 0 8px}
+.partners p{margin:0;color:var(--neutral-dark);max-width:700px}
+
+/* ── Вопросы ── */
+.faq{max-width:900px}
+.faq details{border-bottom:1px solid #E3E9F1}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;font:600 16.5px/1.35 var(--font-main);color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pm{position:relative;width:16px;height:16px;flex-shrink:0}
+.faq summary .pm::before,.faq summary .pm::after{content:"";position:absolute;left:0;top:7px;width:16px;height:2px;background:var(--conv-dark);transition:transform .2s}
+.faq summary .pm::after{transform:rotate(90deg)}
+.faq details[open] summary .pm::after{transform:rotate(0)}
+.faq details p{margin:0 0 20px;color:var(--neutral-dark);max-width:780px}
+
+/* ── Форма ── */
+.form-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+.form-wrap .lead{margin-bottom:0}
+form{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:32px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fgrid .full{grid-column:1/-1}
+label.f{display:block;font:500 12.5px var(--font-main);color:var(--neutral-dark);margin-bottom:6px}
+label.f em{font-style:normal;color:var(--conv-dark)}
+input[type=text],input[type=tel],input[type=email],input[type=number],select,textarea{width:100%;font:400 15px var(--font-second);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:11px 12px;background:var(--white)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--main-accent);box-shadow:0 0 0 3px rgba(88,151,251,.18)}
+textarea{min-height:84px;resize:vertical}
+.consent{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;font-size:13px;color:var(--neutral-dark);margin:18px 0 22px}
+.consent input{width:18px;height:18px;margin:1px 0 0;accent-color:var(--main-darkness)}
+.consent a{color:var(--main-mid)}
+.err{color:var(--conv-dark);font-size:13px;margin:-10px 0 14px}
+.ok{background:var(--main-light);border-radius:var(--radius);padding:22px;font:600 16px var(--font-main);color:var(--main-darkness)}
+
+/* ── Подвал ── */
+.footer{background:var(--footer);margin-top:80px;padding:44px 0 28px;font-size:13.5px;color:var(--neutral-dark)}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px}
+.footer h5{font:600 14px var(--font-main);color:var(--main-darkness);margin:0 0 12px}
+.footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.footer a{text-decoration:none}
+.footer .copy{margin-top:30px;padding-top:18px;box-shadow:inset 0 1px 0 rgba(16,67,121,.12);font-size:12px;color:var(--neutral)}
+
+
+/* ── Адаптив ── */
+@media (max-width:1080px){
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .step + .step::before{display:none}
+  .why{grid-template-columns:repeat(2,1fr)}
+  .inds{grid-template-columns:repeat(3,1fr)}
+  .search{display:none}
+}
+@media (max-width:900px){
+  :root{--header-h:60px}
+  .hero{grid-template-columns:1fr;padding:36px 24px 56px}
+  .hero .slogan{font-size:34px}
+  .event{right:10px;bottom:-34px}
+  .where{grid-template-columns:1fr}
+  .psim{grid-template-columns:1fr;padding:26px 22px;gap:26px}
+  .recs{grid-template-columns:repeat(2,1fr)}
+  .ecos{grid-template-columns:repeat(2,1fr)}
+  .lines{grid-template-columns:1fr}
+  .cases{grid-template-columns:1fr}
+  .custom{grid-template-columns:1fr;gap:30px}
+  .demo{padding:36px 24px}
+  .demo-grid{grid-template-columns:1fr}
+  .partners{grid-template-columns:1fr;padding:28px 24px}
+  .form-wrap{grid-template-columns:1fr;gap:26px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .cabinet span{display:none}
+}
+@media (max-width:600px){
+  body{font-size:14.5px}
+  .header .container{gap:16px}
+  .logo{width:124px;height:29px}
+  .phone{font-size:13px}
+  .cabinet{padding:9px 10px}
+  .menu-btn span{display:none}
+  .section{padding:52px 0}
+  .section-title{font-size:24px}
+  .eyebrow{letter-spacing:.3em}
+  .hero{padding:30px 18px 52px}
+  .hero .slogan{font-size:28px}
+  .hero .kicker{font-size:13px;letter-spacing:.1em}
+  .hero .sub{font-size:16px}
+  .btn-row .btn{width:100%}
+  .event{position:relative;right:auto;bottom:auto;width:auto;margin:-28px 10px 0}
+  .facts{grid-template-columns:1fr}
+  .fact{padding:16px 18px}
+  .fact + .fact{box-shadow:inset 0 1px 0 #E7EEF7}
+  .fact-num{font-size:22px;white-space:normal}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;margin-right:-16px;padding-right:16px;scrollbar-width:thin}
+  .steps{grid-template-columns:1fr}
+  .why{grid-template-columns:1fr}
+  .recs{grid-template-columns:repeat(2,1fr);gap:12px}
+  .rec{padding:12px 12px 14px}
+  .rec-img{height:56px}
+  .rec-name{font-size:14px}
+  .rec-text{font-size:12.5px}
+  .ecos{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr;gap:12px;padding:22px}
+  .case-num small{max-width:none}
+  .inds{grid-template-columns:repeat(2,1fr)}
+  .ind{min-height:104px;font-size:13px}
+  form{padding:22px 18px}
+  .fgrid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* ── Дополнения: оговорка о ценах, плитка кейсов, форма ── */
+.steps{list-style:none;margin:0;padding:0}
+.why,.cases,.inds{margin-top:28px}
+.faq{margin-top:18px}
+.case-more{display:flex;flex-direction:column;justify-content:space-between;gap:18px;background:linear-gradient(160deg,var(--main-light) 0%,#D3E7FF 100%);border-radius:var(--radius);padding:28px;text-decoration:none;color:var(--main-darkness);font:600 18px/1.3 var(--font-main)}
+.case-more .more{align-self:flex-start}
+.case-more-sub{display:block;margin-top:10px;font:400 14.5px/1.5 var(--font-second);color:var(--neutral-dark)}
+.hint{margin:-4px 0 0;font-size:12.5px;color:var(--neutral)}
+.policy{margin:-10px 0 18px 30px;font-size:13px}
+.policy a{color:var(--main-mid)}
+.req{font-style:normal;color:var(--conv-dark)}
+.footer-phone{margin:14px 0 0}
+</style>
+<link rel="stylesheet" href="../../ui/solution-selection.css"><link rel="stylesheet" href="../../ui/videoanalytics-fonts.css">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="index.html">
+<link rel="stylesheet" href="../../ui/navigation.css"><script src="../../ui/videoanalytics-navigation.js" defer> </script><link rel="stylesheet" href="../../ui/videoanalytics-integration.css"><link rel="stylesheet" href="../../ui/product-proportions.css"></head>
+<body class="videoanalytics-page product-compact">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo-trassir" viewbox="0 0 156 36">
+    <path d="M151.424 23.9578H151.408C150.057 23.9609 148.966 25.0542 148.969 26.3978C148.972 27.7413 150.072 28.8254 151.424 28.8223C152.775 28.8192 153.866 27.7259 153.862 26.3823C153.856 25.045 152.769 23.9609 151.424 23.9578ZM151.424 28.5227C150.262 28.5258 149.314 27.5931 149.311 26.4379C149.308 25.2828 150.246 24.3408 151.408 24.3377H151.424C152.586 24.3377 153.53 25.2766 153.53 26.4317C153.53 27.5869 152.586 28.5227 151.424 28.5227Z" fill="#104379"></path>
+    <path d="M152.294 27.0032C152.238 26.5924 152.076 26.3732 151.834 26.3268V26.3083C152.151 26.2403 152.374 25.9593 152.374 25.6381C152.393 25.4188 152.3 25.2026 152.126 25.0667C151.868 24.9092 151.567 24.8381 151.262 24.8598C151.001 24.8628 150.74 24.8845 150.482 24.9246V27.6827H150.923V26.4936H151.231C151.517 26.4504 151.784 26.648 151.824 26.9322C151.828 26.9507 151.828 26.9692 151.831 26.9878C151.852 27.2318 151.915 27.4696 152.014 27.692H152.477C152.381 27.4727 152.318 27.241 152.294 27.0032ZM151.234 26.157H150.914V25.2242C151.02 25.2057 151.125 25.1995 151.234 25.1995C151.731 25.1995 151.908 25.4466 151.908 25.6937C151.908 26.0334 151.598 26.1662 151.234 26.1662" fill="#104379"></path>
+    <path d="M98.7722 9.5156C94.084 9.5156 90.3465 12.3324 89.6195 16.3352C88.9639 20.0755 91.7166 23.0622 95.8766 23.0622H102.771C105.405 23.0622 106.772 24.1617 106.443 25.9994C106.173 27.5221 104.548 28.6217 102.6 28.6217H88.2276C88.7433 27.7661 89.0975 26.8241 89.2746 25.8419C90.0171 21.6754 87.5224 19.0223 82.9056 19.0223H75.325C73.6318 19.0223 72.3952 17.7622 72.6562 16.3136C73.0197 14.7971 74.3743 13.7223 75.9432 13.7037H86.4008C90.0047 13.7037 90.6137 9.49707 90.6137 9.49707H74.8372C70.1521 9.49707 66.4115 12.3139 65.6969 16.3167C65.029 20.0693 67.7847 23.0436 71.9447 23.0436H78.8388C81.4703 23.0436 82.8342 24.1432 82.5142 25.9809C82.2439 27.5036 80.6128 28.6031 78.671 28.6031H65.6472L60.7726 9.5156H55.0467C55.0467 9.5156 52.9341 13.0459 51.6292 15.143C48.5379 20.0817 52.089 23.3865 52.1387 23.4452H46.8509L43.2874 29.5081L40.1464 23.4235C43.9212 22.6514 46.5899 20.0632 47.2051 16.6039C47.9041 12.7154 45.4466 9.51251 41.706 9.51251H5.53636C1.94177 9.5156 1.33594 13.7006 1.33594 13.7006H11.9457L8.5562 32.8067C8.5562 32.8067 13.8689 33.3132 14.9438 27.2472C15.6864 22.9819 17.3392 13.713 17.3392 13.713H36.4462C39.205 13.713 40.7212 14.8743 40.3825 16.7769C40.0594 18.6208 37.8691 20.128 35.4271 20.128H27.0573C23.1707 20.1311 22.0585 24.0258 22.0585 24.0258L20.4988 32.8098H25.9016L27.4892 23.8559H33.9607L38.4221 32.8098H47.1492L50.2063 27.5128H59.8188L60.8316 32.8098H104.74C108.872 32.8098 112.495 29.8046 113.197 25.8296C113.94 21.663 111.464 19.0099 106.831 19.0099H99.2631C97.5729 19.0099 96.3271 17.7498 96.5881 16.3012C96.7403 15.4272 97.4425 14.6149 98.5702 14.0836C98.9679 13.8582 99.4122 13.7284 99.872 13.7037H118.314L114.931 32.8036C114.931 32.8036 119.607 33.2515 121.073 28.2726C121.129 27.9978 121.185 27.729 121.231 27.4387L124.41 9.5156H98.7722ZM52.1512 23.4544L57.0196 15.2975L58.7532 23.4421L52.1512 23.4544Z" fill="#104379"></path>
+    <path d="M149.584 11.9H126.389L126.084 13.6235H149.28L149.584 11.9ZM147.758 9.51562H126.814L126.507 11.2391H147.45L147.758 9.51562ZM143.029 14.2999L142.728 16.0233H151.101L151.405 14.2999H143.029ZM145.629 21.4963H124.689L124.379 23.2197H145.322L145.629 21.4963ZM142.296 18.4262H150.672L150.982 16.7028H142.606L142.296 18.4262ZM148.304 19.0995H126.774L126.47 20.823H148L148.304 19.0995ZM142.877 23.893H136.719L136.415 25.6165H142.575L142.877 23.893ZM123.953 25.6165H129.26L129.57 23.893H124.258L123.953 25.6165ZM144.707 26.2836H138.537L138.229 28.0071H144.402L144.707 26.2836ZM146.527 28.6866H140.366L140.065 30.41H146.232L146.527 28.6866ZM141.886 32.8098H148.056L148.354 31.0864H142.193L141.886 32.8098ZM122.682 32.8098H127.992L128.306 31.0864H122.99L122.682 32.8098ZM123.108 30.4131H128.424L128.728 28.6896H123.409L123.108 30.4131ZM123.829 26.3269L123.537 28.0132H128.853L129.154 26.2898H124.466L123.829 26.3269Z" fill="#DB1719"></path>
+    <path d="M120.017 1.51002L119.01 7.18995H124.227L124.279 6.88726C125.32 1.02511 120.017 1.51002 120.017 1.51002Z" fill="#104379"></path>
+  </symbol>
+  <symbol id="chev" viewbox="0 0 7 12"><path d="M1 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+  <symbol id="check" viewbox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#104379"></circle><path d="M6 10.3l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+  <symbol id="arrow" viewbox="0 0 22 22"><path d="M4 11h13M12 6l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+  <symbol id="person" viewbox="0 0 40 90"><circle cx="20" cy="11" r="8" fill="rgba(234,244,255,.78)"></circle><path d="M8 26c0-4 4-7 12-7s12 3 12 7v26h-5v34h-6V58h-2v28h-6V52H8z" fill="rgba(234,244,255,.62)"></path></symbol>
+</svg>
+
+<header class="header demo-header" data-site-header="prototype">
+  <div class="container">
+    <a href="../../index.html" aria-label="TRASSIR, на главную"><svg class="logo" role="img" aria-label="TRASSIR"><use href="#logo-trassir"></use></svg></a>
+    <button class="menu-btn demo-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="demo-navigation"><i><b></b><b></b><b></b></i><span>Меню</span></button>
+    <div class="search" aria-hidden="true"><span>Поиск по каталогу</span><svg width="16" height="16" viewbox="0 0 16 16"><circle cx="7" cy="7" r="5.5" fill="none" stroke="#8D8D8D" stroke-width="1.5"></circle><path d="M11 11l4 4" stroke="#8D8D8D" stroke-width="1.5" stroke-linecap="round"></path></svg></div>
+    <a class="phone" href="tel:+74951330461">+7 (495) 133-04-61</a>
+    <a class="cabinet stub" href="#"><svg width="14" height="14" viewbox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="4.5" r="3" fill="none" stroke="#104379" stroke-width="1.4"></circle><path d="M1.5 13c.6-2.8 2.8-4.3 5.5-4.3s4.9 1.5 5.5 4.3" fill="none" stroke="#104379" stroke-width="1.4"></path></svg><span>Личный кабинет</span></a>
+  </div>
+<div class="demo-backdrop" hidden aria-hidden="true"></div><nav class="demo-nav" id="demo-navigation" aria-label="Главное меню" hidden><div class="demo-menu-grid"><div class="demo-menu-column"><section class="demo-menu-group"><h2 class="demo-menu-title"><a href="../../index.html">Главная</a></h2><ul class="demo-menu-links"><li><a href="../../home-old/index.html">Главная старая</a></li><li><a href="../../index.html">Главная v1</a></li><li><a href="../../home-v2/index.html">Главная v2</a></li></ul></section><section class="demo-menu-group"><h2 class="demo-menu-title"><a href="../../services/uslugi-dlya-proektnykh-organizatsiy/index.html">Проектным организациям</a></h2></section><section class="demo-menu-group"><h2 class="demo-menu-title"><span class="demo-disabled" aria-disabled="true" title="Страница будет добавлена позже">Скачать клиент</span></h2></section></div><div class="demo-menu-column"><section class="demo-menu-group"><h2 class="demo-menu-title">Продукты</h2><div class="demo-menu-category"><h3 class="demo-menu-subtitle">Оборудование для видеонаблюдения</h3><ul class="demo-menu-links"><li><a href="../cameras/index.html">Камеры</a></li><li><a href="../recorders/index.html">Регистраторы</a></li><li><a href="../skud/index.html">СКУД</a></li><li><a href="../network/index.html">Сетевое оборудование</a></li></ul></div><div class="demo-menu-category"><h3 class="demo-menu-subtitle">Программное обеспечение</h3><ul class="demo-menu-links"><li><a href="../vms/index.html">Система управления видеонаблюдением (VMS)</a></li><li><a href="../cms/index.html">Мониторинг систем видеонаблюдения (CMS)</a></li><li><a href="../psim/index.html">Центр управления тревогами (PSIM)</a></li><li><a href="index.html" aria-current="page">Видеоаналитика</a></li><li><a href="../cloud/index.html">Облачные технологии</a></li></ul></div></section></div><div class="demo-menu-column"><section class="demo-menu-group"><h2 class="demo-menu-title">Отраслевые решения</h2><ul class="demo-menu-links"><li><a href="../../decision/videoanalitika-dlya-roznichnoy-torgovli/index.html">Розничная торговля</a></li><li><a href="../../decision/videoanalitika-dlya-skladskoy-logistiki/index.html">Склады и логистика</a></li><li><a href="../../decision/videoanalitika-dlya-gostinichnogo-biznesa/index.html">Гостиничный бизнес</a></li><li><a href="../../decision/videoanalitika-dlya-predpriyatiy-i-promyshlennykh-obektov/index.html">Промышленность и производство</a></li><li><a href="../../decision/videoanalitika-dlya-restoranov-i-kafe/index.html">Рестораны и кафе</a></li><li><a href="../../decision/videoanalitika-dlya-bankov-i-finansovogo-sektora/index.html">Банки и финансовые организации</a></li><li><a href="../../decision/dlya-torgovykh-tsentrov/index.html">Торговые центры</a></li><li><a href="../../decision/videoanalitika-dlya-gosudarstvennykh-munitsipalnykh-obrazovatelnykh-kulturnykh-sportivnykh-i-meditsi/index.html">Государственные учреждения</a></li></ul></section></div><div class="demo-menu-column"><section class="demo-menu-group"><h2 class="demo-menu-title">Партнерам</h2><ul class="demo-menu-links"><li><a href="../../partners/partnership-program/index.html">Партнерская программа</a></li><li><a href="../../training_center/index.html">Центр обучения TRASSIR</a></li></ul></section><section class="demo-menu-group"><h2 class="demo-menu-title"><a href="../../about/index.html">О компании</a></h2><ul class="demo-menu-links"><li><a href="../../about/production/index.html">Собственное производство</a></li><li><span class="demo-disabled" aria-disabled="true" title="Страница будет добавлена позже">Контакты</span></li><li><span class="demo-disabled" aria-disabled="true" title="Страница будет добавлена позже">Новости</span></li><li><span class="demo-disabled" aria-disabled="true" title="Страница будет добавлена позже">Маркетинговые материалы</span></li></ul></section></div></div></nav></header>
+
+<main>
+  <div class="container">
+    <nav class="crumbs" aria-label="Навигационная цепочка"><a href="../../index.html">Главная</a><span>›</span>Видеоаналитика</nav>
+
+    <!-- 1. Первый экран -->
+    <section class="hero" aria-labelledby="h1">
+      <div>
+        <h1 id="h1" class="kicker">Видеоаналитика TRASSIR</h1>
+        <p class="slogan">Автоматизация контроля и безопасности бизнеса</p>
+        <p class="sub">TRASSIR следит за территорией, производством, магазином и складом и сообщает о нарушениях.</p>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#check"></use></svg><span>Работает с уже установленными камерами: аналитику включают в видеорегистраторе или на сервере TRASSIR</span></li>
+          <li><svg aria-hidden="true"><use href="#check"></use></svg><span>Сигнал приходит на экран оператора, в Telegram или на почту, а система сама включает сирену или открывает шлагбаум</span></li>
+          <li><svg aria-hidden="true"><use href="#check"></use></svg><span>Видео связано с кассой, складской программой и системой контроля доступа</span></li>
+          <li><svg aria-hidden="true"><use href="#check"></use></svg><span>Видеонаблюдение, контроль доступа и охранно-пожарная сигнализация — в одном окне TRASSIR PSIM</span></li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn" href="https://trassir.ru/live-demo/" target="_blank" rel="noopener">Проверить на своём видео<svg aria-hidden="true"><use href="#chev"></use></svg></a>
+          <a class="btn btn-empty" href="#form">Подобрать модули<svg aria-hidden="true"><use href="#chev"></use></svg></a>
+        </div>
+      </div>
+      <div class="shot" role="img" aria-label="Схема: камера периметра, детектор нашёл человека в зоне и отправил тревогу оператору">
+        <div class="frame">
+          <div class="frame-scene"></div>
+          <div class="frame-grid"></div>
+          <div class="fence"></div>
+          <div class="frame-hud">Камера 7 · Периметр</div>
+          <div class="zone" style="left:4%;top:58%;width:46%;height:34%"><span class="zone-tag">Периметр, северный участок</span></div>
+          <div class="bbox" style="left:20%;top:34%;width:10%;height:46%"><span class="bbox-tag">Человек</span><svg viewbox="0 0 40 90" preserveaspectratio="xMidYMax meet" aria-hidden="true"><use href="#person"></use></svg></div>
+          <div class="frame-ts">08.10.2026  19:26:37</div>
+        </div>
+        <div class="event">
+          <span class="event-kind">Сигнал</span>
+          <b>Человек в зоне «Периметр, северный участок»</b>
+          <p>19:26 · Neuro Detector · кадр приложен</p>
+          <p class="to">Отправлено: экран оператора, Telegram</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 3. Что можно контролировать -->
+  <section class="section" id="tasks" aria-labelledby="tasks-t">
+    <div class="container">
+      <p class="eyebrow">для бизнеса</p>
+      <h2 class="section-title" id="tasks-t">Продукты под ваши задачи</h2>
+
+      <div class="tabs" role="tablist" aria-label="Задачи по направлениям">
+        <button class="tab" role="tab" id="t-sec" aria-controls="p-sec" aria-selected="true">Охрана территории</button>
+        <button class="tab" role="tab" id="t-fire" aria-controls="p-fire" aria-selected="false" tabindex="-1">Пожар и происшествия</button>
+        <button class="tab" role="tab" id="t-car" aria-controls="p-car" aria-selected="false" tabindex="-1">Транспорт и въезд</button>
+        <button class="tab" role="tab" id="t-hse" aria-controls="p-hse" aria-selected="false" tabindex="-1">Охрана труда и рабочие места</button>
+        <button class="tab" role="tab" id="t-ret" aria-controls="p-ret" aria-selected="false" tabindex="-1">Магазин</button>
+        <button class="tab" role="tab" id="t-wh" aria-controls="p-wh" aria-selected="false" tabindex="-1">Склад и производство</button>
+        <button class="tab" role="tab" id="t-arc" aria-controls="p-arc" aria-selected="false" tabindex="-1">Поиск в видеоархиве</button>
+      </div>
+
+      <div class="cards" role="tabpanel" id="p-sec" aria-labelledby="t-sec">
+        <article class="card">
+          <h3>Сигнал о человеке или машине в охраняемой зоне</h3>
+          <p>Neuro Detector сообщает оператору, когда в охраняемой зоне появился человек или транспорт. Следить за всеми камерами подряд не нужно. Модуль работает на сервере TRASSIR NeuroStation.</p>
+          <div class="mod"><span class="nm">TRASSIR Neuro Detector</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Сигнал о вторжении — прямо в видеорегистраторе</h3>
+          <p>Детектор вторжения уже встроен в видеорегистраторы TRASSIR серии 4 (MiniNVR и Duo), отдельный сервер не нужен. Детектор замечает людей и машины в помещении на расстоянии до 15 метров. Нужна освещённость от 200 люкс.</p>
+          <div class="mod"><span class="nm">Детектор вторжения</span><span class="pr">входит в программу видеорегистратора</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Охрана большой территории на расстоянии до 30 метров</h3>
+          <p>Детектор вторжения ПРО замечает людей и машины на расстоянии до 30 метров, даже если их частично закрывают другие предметы. Нужна освещённость от 100 люкс. Подсчёт людей и машин и отслеживание их движения входят в лицензию. Детектор работает на сервере с операционной системой TRASSIR OS 2.0 и видеокартой NVIDIA.</p>
+          <div class="mod"><span class="nm">Детектор вторжения ПРО</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Поворотная камера сама следит за нарушителем</h3>
+          <p>В модуле ActiveDome+ Neuro обзорная камера замечает нарушителя, а поворотная сама наводится на него и следит за его движением. Оператор видит нарушителя крупным планом и не управляет камерой вручную.</p>
+          <div class="mod"><span class="nm">TRASSIR ActiveDome+ Neuro PTZ</span><span class="pr">лицензия на пару камер: обзорную и поворотную</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Сигнал об оставленной без присмотра вещи</h3>
+          <p>Left Object Detector замечает сумки и другие вещи, оставленные без присмотра, и сообщает оператору. Пригодится на вокзале, в торговом центре, на проходной.</p>
+          <div class="mod"><span class="nm">TRASSIR Left Object Detector</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Сигнал о движении в запрещённую сторону</h3>
+          <p>Direction Detector замечает человека, автомобиль или велосипед, который движется в запрещённую сторону: на выезде, в проходе, по внутренней дороге предприятия.</p>
+          <div class="mod"><span class="nm">TRASSIR Direction Detector</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Оператор узнает, если камеру закрыли или повернули</h3>
+          <p>Sabotage Detector сообщает, если объектив закрыли или ослепили ярким светом, камеру повернули, изображение стало размытым или пропала связь с камерой. Camera Image Quality Indicator напоминает почистить уличную камеру, когда объектив загрязнился или его затянуло паутиной.</p>
+          <div class="mod"><span class="nm">TRASSIR Sabotage Detector</span><span class="nm">TRASSIR Camera Image Quality Indicator</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+      </div>
+
+      <div class="cards" role="tabpanel" id="p-fire" aria-labelledby="t-fire" hidden>
+        <article class="card">
+          <h3>Сигнал об огне и дыме на открытой площадке</h3>
+          <p>Fire and Smoke Detector находит пламя и дым в кадре, в том числе на открытых площадках, где пожарные датчики для помещений не ставят. По сигналу система может включить сирену, вывести сигнал на экран оператора или подать команду другому устройству. Видеодетектор дополняет пожарную сигнализацию и не заменяет её. Есть и простой бесплатный модуль Fire &amp; Smoke — он тоже находит огонь и дым.</p>
+          <div class="mod"><span class="nm">TRASSIR Fire and Smoke Detector</span><span class="nm">TRASSIR Fire &amp; Smoke</span></div>
+          <div class="foot"><a class="more" href="https://trassir.ru/products/programmnoe_obespechenie_trassir/NEURO_FIRE_SMOKE_DETECTOR/" target="_blank" rel="noopener">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Сигнал, если человек лежит на полу</h3>
+          <p>Pose Detector определяет позу человека в кадре и сообщает оператору, если человек лежит: например, упал на складе или в цехе.</p>
+          <div class="mod"><span class="nm">TRASSIR Pose Detector</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Сигнал, когда людей в зоне больше допустимого</h3>
+          <p>Crowd Detector считает людей в выбранной зоне и сообщает, когда их больше заданного числа: в цехе, на проходной, в общественном месте.</p>
+          <div class="mod"><span class="nm">TRASSIR Crowd Detector</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+      </div>
+
+      <div class="cards" role="tabpanel" id="p-car" aria-labelledby="t-car" hidden>
+        <article class="card">
+          <h3>Шлагбаум открывается по номеру автомобиля</h3>
+          <p>AutoTRASSIR распознаёт номер автомобиля. По номеру TRASSIR может открыть шлагбаум или передать данные в систему контроля доступа. Номера и кадры сохраняются в журнале. На въезд и на выезд нужно по отдельной камере распознавания.</p>
+          <div class="mod"><span class="nm">AutoTRASSIR-30</span><span class="pr">для машин на скорости до 30 км/ч</span><span class="nm">AutoTRASSIR-200</span><span class="pr">для машин на скорости до 200 км/ч</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Номера распознаёт камера — сервер почти не нагружается</h3>
+          <p>Если камера Hikvision, Dahua или другого производителя умеет сама распознавать номера, TRASSIR получает от неё готовый номер. Нагрузка на сервер почти не растёт, поэтому к нему можно подключить больше таких камер.</p>
+          <div class="mod"><span class="nm">AutoTRASSIR HW</span><span class="pr">список поддерживаемых камер уточняйте у менеджера</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Сколько машин на парковке и как долго каждая стоит</h3>
+          <p>AutoTRASSIR-30 Parking считает машины на парковке и показывает, сколько времени простояла каждая.</p>
+          <div class="mod"><span class="nm">AutoTRASSIR-30 Parking</span><span class="pr">нужен AutoTRASSIR-30 не меньше чем на две камеры</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Средняя скорость машин на внутренних дорогах</h3>
+          <p>AutoTRASSIR-200 AvgSpeed считает среднюю скорость машин на участке внутренней дороги и строит отчёты. Для штрафов за превышение скорости модуль не подходит: это не официальный измерительный прибор.</p>
+          <div class="mod"><span class="nm">AutoTRASSIR-200 AvgSpeed</span><span class="pr">нужен AutoTRASSIR-200 не меньше чем на две камеры</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+      </div>
+
+      <div class="cards" role="tabpanel" id="p-hse" aria-labelledby="t-hse" hidden>
+        <article class="card">
+          <h3>Сигнал о человеке без каски или жилета</h3>
+          <p>Hardhat Detector замечает человека без защитной каски, Wear Detector — без сигнального жилета. Сигнал приходит оператору, на электронную почту или в Telegram, а кадр сохраняется как доказательство нарушения.</p>
+          <div class="mod"><span class="nm">TRASSIR Hardhat Detector</span><span class="nm">TRASSIR Wear Detector</span></div>
+          <div class="foot"><a class="more" href="https://trassir.ru/products/programmnoe_obespechenie_trassir/trassir_videoanalitika/trassir_hardhat_detector/" target="_blank" rel="noopener">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Каски и жилеты в большом цехе проверяет поворотная камера</h3>
+          <p>Обзорная камера находит людей, поворотная приближает каждого и проверяет каску или жилет. Подходит для больших цехов с высокими потолками.</p>
+          <div class="mod"><span class="nm">TRASSIR ActiveDome+ Hardhat PTZ</span><span class="nm">TRASSIR ActiveDome+ Wear PTZ</span><span class="pr">Лицензия на пару камер: обзорную и поворотную</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Сигнал, когда сотрудник надолго ушёл с рабочего места</h3>
+          <p>В Workplace Detector задают рабочую зону, график и допустимое время отсутствия. Если сотрудника нет дольше допустимого, приходит сигнал. В отчёте видно, сколько времени люди провели на местах и как часто уходили.</p>
+          <div class="mod"><span class="nm">TRASSIR Workplace Detector</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+      </div>
+
+      <div class="cards" role="tabpanel" id="p-ret" aria-labelledby="t-ret" hidden>
+        <article class="card">
+          <h3>Подозрительные операции на кассе — с видео</h3>
+          <p>ActivePOS проверяет операции на кассе по правилам, которые задаёт магазин. Если операция нарушает правило, оператор получает короткое видео этого момента. Спор с покупателем разбирают по записи, привязанной к чеку.</p>
+          <div class="mod"><span class="nm">TRASSIR ActivePOS</span><span class="pr">для касс с программой SetRetail — отдельная лицензия</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Видно, какой взвешенный товар не дошёл до кассы</h3>
+          <p>ActivePOS Weight сравнивает данные весов в торговом зале с чеками. Если взвешенный товар не пробили на кассе, он попадает в отчёт: название, вес, время и ссылка на видео.</p>
+          <div class="mod"><span class="nm">TRASSIR ActivePOS Weight</span><span class="pr">нужен ActivePOS на кассах и на весах</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Администратор узнаёт, что очередь выросла</h3>
+          <p>Queue Detector считает людей в очереди и сообщает администратору, когда их больше заданного числа. Если подключён ActivePOS, Queue Detector учитывает, сколько касс открыто. Сотрудников в форме определённого цвета он не считает. Queue Monitor показывает покупателям длину очередей на экранах у касс.</p>
+          <div class="mod"><span class="nm">TRASSIR Queue Detector</span><span class="nm">TRASSIR Queue Monitor</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Сотрудник получает сигнал о пустой полке</h3>
+          <p>Shelf Detector сообщает сотрудникам, когда пустого места на полке становится больше заданного. Отчёт показывает, как менялось заполнение полок за выбранный период.</p>
+          <div class="mod"><span class="nm">TRASSIR Shelf Detector</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Сколько людей пришло и куда они идут в зале</h3>
+          <p>Neuro Counter считает людей и машины, которые пересекли заданную линию или зону, и строит отчёты за выбранные периоды. Heat Map on Map показывает на плане зала, где посетители задерживаются и куда идут, а сотрудников в форме определённого цвета не учитывает.</p>
+          <div class="mod"><span class="nm">TRASSIR Neuro Counter</span><span class="nm">TRASSIR Heat Map on Map</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Сколько покупателей осталось без внимания продавца</h3>
+          <p>Staff Tracker показывает, хватает ли продавцов в зонах обслуживания, сколько покупателей обслужили, сколько осталось без внимания и как быстро продавец подходил. Продавцов модуль узнаёт по цвету формы.</p>
+          <div class="mod"><span class="nm">TRASSIR Staff Tracker</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+      </div>
+
+      <div class="cards" role="tabpanel" id="p-wh" aria-labelledby="t-wh" hidden>
+        <article class="card">
+          <h3>Видео по номеру складского документа</h3>
+          <p>ActiveStock связывает операции складской программы с видео. Оператор вводит номер документа и видит записи только с тех камер, которые снимали товар из этого документа. Пропажу или повреждение товара разбирают, не просматривая весь архив.</p>
+          <div class="mod"><span class="nm">TRASSIR ActiveStock</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Учёт поддонов и заготовок по наклеенным меткам</h3>
+          <p>На поддон или деталь наклеивают метку ArUco — квадратный чёрно-белый код. ArUco Detector распознаёт метку и записывает её номер в журнал. Такие метки камера читает с большего расстояния, чем QR-коды и штрихкоды.</p>
+          <div class="mod"><span class="nm">TRASSIR ArUco Detector</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Конвейер сам останавливается, когда отгрузили нужное количество</h3>
+          <p>Bag Counter считает мешки и ящики на ленте конвейера. Оператор вводит, сколько нужно отгрузить. Когда счёт дойдёт до этого числа, конвейер остановится. Программа для связи с конвейером входит в комплект.</p>
+          <div class="mod"><span class="nm">TRASSIR Bag Counter</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+      </div>
+
+      <div class="cards" role="tabpanel" id="p-arc" aria-labelledby="t-arc" hidden>
+        <article class="card">
+          <h3>Нужный момент в архиве без просмотра записи целиком</h3>
+          <p>Оператор выделяет часть кадра, а ActiveSearch показывает в видеоархиве все моменты, когда там было движение.</p>
+          <div class="mod"><span class="nm">TRASSIR ActiveSearch</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+        <article class="card">
+          <h3>Несколько моментов из архива на одном экране</h3>
+          <p>MultiSearch показывает на одном экране сразу несколько моментов из разного времени — например, все случаи движения в выбранной части кадра.</p>
+          <div class="mod"><span class="nm">TRASSIR MultiSearch</span></div>
+          <div class="foot"><a class="more stub" href="#">Подробнее<svg aria-hidden="true"><use href="#chev"></use></svg></a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Как работает автоматизация -->
+  <section class="section tint" id="how" aria-labelledby="how-t">
+    <div class="container">
+      <p class="eyebrow">схема</p>
+      <h2 class="section-title" id="how-t">Как работает автоматизация</h2>
+      <p class="lead">Пример: склад закрыт, зона под охраной. Всё, кроме решения, система делает сама.</p>
+      <ol class="steps">
+        <li class="step"><div class="step-n">01</div><h3>В кадре человек</h3><p>Neuro Detector замечает его у стеллажей</p></li>
+        <li class="step"><div class="step-n">02</div><h3>Склад закрыт — значит, это нарушение</h3><p>Правило задаёт администратор: какая зона охраняется и в какие часы</p></li>
+        <li class="step hot"><div class="step-n">03</div><h3>Сирена и сообщение охраннику</h3><p>Сирена включается, кадр уходит в Telegram без участия человека</p></li>
+        <li class="step"><div class="step-n">04</div><h3>Оператор получает карточку тревоги</h3><p>В TRASSIR PSIM: видео с ближайших камер, карта объекта и инструкция, что делать</p></li>
+        <li class="step"><div class="step-n">05</div><h3>Руководитель видит отчёт</h3><p>Кто, когда и как обработал тревогу</p></li>
+      </ol>
+      <p class="steps-note">Человек не следит за экранами: он принимает решение по готовой карточке тревоги.</p>
+
+      <div class="psim">
+        <div>
+          <h3>TRASSIR PSIM — все системы безопасности в одном окне</h3>
+          <p>PSIM собирает в одном интерфейсе видеонаблюдение, контроль доступа и охранно-пожарную сигнализацию. Тревоги идут по приоритету, у каждой есть видео с ближайших камер, карта объекта и инструкция для оператора.</p>
+          <p class="psim-int">Подключаются системы контроля доступа TRASSIR, Sigur, PERCo, Bolid, Suprema и охранно-пожарные системы Bolid, Bosch, Stemax.</p>
+          <a class="btn btn-empty" href="https://solutions.trassir.ru/psim/" target="_blank" rel="noopener">Подробнее о PSIM<svg aria-hidden="true"><use href="#chev"></use></svg></a>
+        </div>
+        <div class="incident" role="img" aria-label="Схема: карточка тревоги в TRASSIR PSIM">
+          <div class="inc-head"><span class="event-kind">Тревога</span><span class="inc-prio">Высокий приоритет</span></div>
+          <b>Склад 2 · зона «Стеллажи»</b>
+          <p class="inc-meta">22:14 · Neuro Detector · камеры 3 и 4</p>
+          <div class="inc-video">
+            <div class="frame-scene"></div><div class="frame-grid"></div>
+            <div class="bbox" style="left:40%;top:30%;width:13%;height:56%"><span class="bbox-tag">Человек</span><svg viewbox="0 0 40 90" preserveaspectratio="xMidYMax meet" aria-hidden="true"><use href="#person"></use></svg></div>
+            <span class="inc-cam">Камера 3</span>
+          </div>
+          <ol class="inc-steps"><li>Посмотреть видео с камер 3 и 4</li><li>Вызвать группу реагирования</li><li>Отметить, чем закончилась тревога</li></ol>
+          <p class="inc-foot">Инструкцию для каждого типа тревоги задаёт администратор</p>
+        </div>
+      </div>
+
+      <div class="rec-head">
+        <div><h3 class="where-title">Видеорегистраторы TRASSIR</h3><p class="rec-lead">Аналитика работает в видеорегистраторах и серверах TRASSIR.</p></div>
+        <a class="more" href="https://trassir.ru/products/videonablyudenie/videoregistratory/ip_videoregistratory_nvr/" target="_blank" rel="noopener">Все видеорегистраторы<svg aria-hidden="true"><use href="#chev"></use></svg></a>
+      </div>
+      <div class="recs">
+        <a class="rec" href="https://trassir.ru/products/videonablyudenie/videoregistratory/ip_videoregistratory_nvr/TRASSIR_MININVR_4216R_AF/" target="_blank" rel="noopener">
+          <span class="rec-img"><img src="data:image/jpeg;base64,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" alt="TRASSIR MiniNVR серии 4"></span>
+          <span class="rec-name">MiniNVR серии 4</span>
+          <span class="rec-text">4–32 камеры, для магазинов и небольших объектов. Детектор вторжения встроен</span>
+        </a>
+        <a class="rec" href="https://trassir.ru/products/videonablyudenie/videoregistratory/ip_videoregistratory_nvr/TRASSIR_DUOSTATION_4416R_AF/" target="_blank" rel="noopener">
+          <span class="rec-img"><img src="data:image/jpeg;base64,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" alt="TRASSIR DuoStation серии 4"></span>
+          <span class="rec-name">DuoStation серии 4</span>
+          <span class="rec-text">16–32 камеры и до четырёх дисков. Детектор вторжения встроен</span>
+        </a>
+        <a class="rec" href="https://trassir.ru/products/videonablyudenie/videoregistratory/ip_videoregistratory_nvr/TRASSIR_NEUROSTATION_9400R_32/" target="_blank" rel="noopener">
+          <span class="rec-img"><img src="data:image/jpeg;base64,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" alt="TRASSIR NeuroStation"></span>
+          <span class="rec-name">NeuroStation</span>
+          <span class="rec-text">Для аналитики на нейросетях, обрабатывает видео и с других видеорегистраторов</span>
+        </a>
+        <a class="rec" href="https://trassir.ru/products/videonablyudenie/videoregistratory/ip_videoregistratory_nvr/TRASSIR_ULTRASTATION_16_4_V2/" target="_blank" rel="noopener">
+          <span class="rec-img"><img src="data:image/jpeg;base64,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" alt="TRASSIR UltraStation"></span>
+          <span class="rec-name">UltraStation</span>
+          <span class="rec-text">До 256 камер для крупных объектов, есть версии на Astra Linux</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Экосистема TRASSIR -->
+  <section class="section" id="why" aria-labelledby="why-t">
+    <div class="container">
+      <p class="eyebrow">экосистема</p>
+      <h2 class="section-title" id="why-t">Экосистема TRASSIR</h2>
+      <p class="lead">Камеры, видеорегистраторы, программы и облако одного производителя работают вместе. Аналитику настраивают там же, где видеонаблюдение, а её сигналы попадают в контроль доступа и PSIM.</p>
+      <div class="ecos">
+        <a class="eco" href="https://trassir.ru/products/videonablyudenie/kamery_videonablyudeniya/ip_kamery_videonablyudeniya/" target="_blank" rel="noopener">
+          <svg viewbox="0 0 40 40" aria-hidden="true"><rect x="5" y="12" width="24" height="15" rx="3"></rect><path d="M29 17l7-4v13l-7-4"></path><circle cx="17" cy="19.5" r="3.5" class="acc"></circle><path d="M13 27v6h7"></path></svg>
+          <span class="eco-name">IP-камеры TRASSIR</span>
+          <span class="eco-text">Камеры для улицы и помещений, часть моделей — со встроенной аналитикой</span>
+        </a>
+        <a class="eco" href="https://trassir.ru/products/videonablyudenie/videoregistratory/ip_videoregistratory_nvr/" target="_blank" rel="noopener">
+          <svg viewbox="0 0 40 40" aria-hidden="true"><rect x="4" y="14" width="32" height="13" rx="3"></rect><circle cx="10" cy="20.5" r="1.8" class="dot"></circle><path d="M16 20.5h14M8 27v4M32 27v4"></path></svg>
+          <span class="eco-name">Видеорегистраторы и серверы</span>
+          <span class="eco-text">MiniNVR, DuoStation, NeuroStation и UltraStation — от 4 до 256 камер</span>
+        </a>
+        <a class="eco" href="https://solutions.trassir.ru/vms-new/" target="_blank" rel="noopener">
+          <svg viewbox="0 0 40 40" aria-hidden="true"><rect x="5" y="7" width="30" height="20" rx="2.5"></rect><path d="M17 13l7 4-7 4z" class="acc"></path><path d="M15 33h10M20 27v6"></path></svg>
+          <span class="eco-name">TRASSIR VMS</span>
+          <span class="eco-text">Программа видеонаблюдения: архив, карты объекта, ситуационный центр, права пользователей</span>
+        </a>
+        <a class="eco" href="#tasks">
+          <svg viewbox="0 0 40 40" aria-hidden="true"><path d="M7 13V8h5M28 8h5v5M33 27v5h-5M12 32H7v-5"></path><circle cx="20" cy="16" r="3"></circle><path d="M14.5 27c.8-3.5 3-5.5 5.5-5.5s4.7 2 5.5 5.5" class="acc"></path></svg>
+          <span class="eco-name">Видеоаналитика</span>
+          <span class="eco-text">Модули для охраны, пожарной безопасности, транспорта, магазинов и складов</span>
+        </a>
+        <a class="eco" href="https://trassir.ru/products/sistemy_kontrolya_dostupa_skud/" target="_blank" rel="noopener">
+          <svg viewbox="0 0 40 40" aria-hidden="true"><rect x="9" y="5" width="18" height="30" rx="2"></rect><circle cx="22" cy="21" r="1.6" class="dot"></circle><path d="M31 15v12"></path></svg>
+          <span class="eco-name">TRASSIR СКУД</span>
+          <span class="eco-text">Контроль доступа в той же программе, пять редакций — от Base до Max</span>
+        </a>
+        <a class="eco" href="https://solutions.trassir.ru/psim/" target="_blank" rel="noopener">
+          <svg viewbox="0 0 40 40" aria-hidden="true"><path d="M20 5l12 5v9c0 8-5.5 13-12 16-6.5-3-12-8-12-16v-9z"></path><path d="M15 20l3.5 3.5L26 16" class="acc"></path></svg>
+          <span class="eco-name">TRASSIR PSIM</span>
+          <span class="eco-text">Видеонаблюдение, контроль доступа и охранно-пожарная сигнализация в одном окне оператора</span>
+        </a>
+        <a class="eco" href="https://solutions.trassir.ru/cms" target="_blank" rel="noopener">
+          <svg viewbox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="9" r="4"></circle><circle cx="9" cy="30" r="4"></circle><circle cx="31" cy="30" r="4"></circle><path d="M18 12.5l-7 14M22 12.5l7 14M13 30h14" class="acc"></path></svg>
+          <span class="eco-name">TRASSIR CMS</span>
+          <span class="eco-text">Сеть объектов из одного центра: для организаций от 15 серверов, с наблюдением за их состоянием</span>
+        </a>
+        <a class="eco stub" href="#">
+          <svg viewbox="0 0 40 40" aria-hidden="true"><path d="M12 28h17a6 6 0 0 0 .5-12A8.5 8.5 0 0 0 13 17.5 5.3 5.3 0 0 0 12 28z"></path><rect x="25" y="22" width="9" height="14" rx="1.8" class="acc"></rect></svg>
+          <span class="eco-name">TRASSIR Cloud и приложения</span>
+          <span class="eco-text">Доступ к видео из любой точки, мобильные приложения для iOS и Android</span>
+        </a>
+        <a class="eco" href="https://solutions.trassir.ru/vms-new/" target="_blank" rel="noopener">
+          <svg viewbox="0 0 40 40" aria-hidden="true"><path d="M16.5 23.5l7-7"></path><path d="M14 17l-3 3a5 5 0 0 0 7 7l3-3"></path><path d="M26 23l3-3a5 5 0 0 0-7-7l-3 3" class="acc"></path></svg>
+          <span class="eco-name">Интеграции с другими системами</span>
+          <span class="eco-text">Системы контроля доступа Sigur, Болид, Parsec, охранно-пожарная сигнализация Болид, Рубеж, Bosch, кассы и складские программы</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Если нужного детектора нет -->
+  <section class="section" id="custom" aria-labelledby="custom-t">
+    <div class="container custom">
+      <div>
+        <p class="eyebrow">лаборатория TRASSIR</p>
+        <h2 class="section-title" id="custom-t">Если нужного детектора нет</h2>
+        <p>Когда задачу не решает ни один модуль из каталога, Лаборатория TRASSIR может сделать новый детектор под объект заказчика. Так появился детектор разлива нефти и нефтепродуктов: он находит тёмные маслянистые пятна на улице и в помещении. Его можно проверить в Live Demo. По запросу Лаборатория оценит, можно ли сделать такой детектор, за какой срок и во что он обойдётся.</p>
+        <a class="btn" href="#form" data-topic="other">Обсудить задачу<svg aria-hidden="true"><use href="#chev"></use></svg></a>
+      </div>
+      <div class="frame" role="img" aria-label="Схема: детектор нашёл пятно нефтепродукта на площадке">
+        <div class="frame-scene day"></div>
+        <div class="frame-grid"></div>
+        <div class="frame-hud">Камера 12 · Производственная площадка</div>
+        <svg class="spill" viewbox="0 0 200 80" preserveaspectratio="none" aria-hidden="true"><path d="M18 40c-6-16 14-30 40-28 18 1 26-10 48-8 30 3 60 8 74 26 10 13-2 28-26 30-20 2-30 12-56 10-22-2-30-8-48-8-18 0-26-8-32-22z" fill="#1B1D21"></path><path d="M60 26c18-4 40-2 52 4" stroke="rgba(160,190,230,.35)" stroke-width="3" fill="none" stroke-linecap="round"></path></svg>
+        <div class="bbox" style="left:28%;top:52%;width:38%;height:32%"><span class="bbox-tag">Пятно нефтепродукта</span></div>
+        <div class="frame-ts">08.10.2026  11:05:52</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Live Demo -->
+  <div class="container" id="demo">
+    <section class="demo" aria-labelledby="demo-t">
+      <p class="eyebrow">проверка</p>
+      <h2 class="section-title" id="demo-t">Проверьте на своём видео</h2>
+      <p class="lead demo-lead">Live Demo — сервис TRASSIR, где можно проверить детекторы на своей записи.</p>
+      <div class="demo-grid">
+        <div class="demo-step"><div class="step-n">01</div><p>Загрузите запись со своей камеры</p></div>
+        <div class="demo-step"><div class="step-n">02</div><p>Мы обработаем её выбранными детекторами, на это уходит 24 часа</p></div>
+        <div class="demo-step"><div class="step-n">03</div><p>Посмотрите, как детекторы сработали на вашей записи</p></div>
+      </div>
+      <ul class="chips" aria-label="Детекторы в Live Demo">
+        <li>Люди и транспорт</li><li>Подсчёт посетителей</li><li>Номера автомобилей</li><li>Огонь и дым</li><li>Распознавание лиц</li><li>Нефтяные пятна</li><li>Скопление людей</li><li>Оставленные предметы</li><li>Рабочее место</li><li>Очередь</li><li>Спецодежда</li><li>Каски</li>
+      </ul>
+      <a class="btn" href="https://trassir.ru/live-demo/" target="_blank" rel="noopener">Загрузить видео<svg aria-hidden="true"><use href="#chev"></use></svg></a>
+    </section>
+  </div>
+
+  <!-- 9. Отрасли -->
+  <section class="section" id="industries" aria-labelledby="ind-t">
+    <div class="container">
+      <p class="eyebrow">отрасли</p>
+      <h2 class="section-title" id="ind-t">Видеоаналитика в вашей отрасли</h2>
+      <div class="inds">
+        <a class="ind" href="https://trassir.ru/decision/videoanalitika-dlya-predpriyatiy-i-promyshlennykh-obektov/" target="_blank" rel="noopener">Производство и предприятия<svg aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="ind" href="https://trassir.ru/decision/videoanalitika-dlya-roznichnoy-torgovli/" target="_blank" rel="noopener">Магазины<svg aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="ind" href="https://trassir.ru/decision/videoanalitika-dlya-skladskoy-logistiki/" target="_blank" rel="noopener">Склады<svg aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="ind" href="https://trassir.ru/decision/videoanalitika-dlya-gosudarstvennykh-munitsipalnykh-obrazovatelnykh-kulturnykh-sportivnykh-i-meditsi/" target="_blank" rel="noopener">Школы, больницы, госучреждения<svg aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="ind" href="https://trassir.ru/decision/videoanalitika-dlya-bankov-i-finansovogo-sektora/" target="_blank" rel="noopener">Банки и финансовый сектор<svg aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="ind" href="https://trassir.ru/decision/videoanalitika-dlya-restoranov-i-kafe/" target="_blank" rel="noopener">Рестораны и кафе<svg aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="ind" href="https://trassir.ru/decision/videoanalitika-dlya-parkinga/" target="_blank" rel="noopener">Парковки<svg aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="ind" href="https://trassir.ru/decision/dlya-torgovykh-tsentrov/" target="_blank" rel="noopener">Торговые центры<svg aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="ind" href="https://trassir.ru/decision/videoanalitika-dlya-gostinichnogo-biznesa/" target="_blank" rel="noopener">Гостиницы<svg aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="ind" href="https://trassir.ru/decision/smart-kpp/" target="_blank" rel="noopener">Умный контрольно-пропускной пункт<svg aria-hidden="true"><use href="#arrow"></use></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Проектировщикам -->
+  <div class="container">
+    <div class="partners">
+      <div>
+        <h3>Проектировщикам и монтажным организациям</h3>
+        <p>Поможем подобрать сервер под число камер и набор детекторов, а также подготовить спецификацию для проекта. Для проектировщиков есть обучение, инструменты для проектирования и консультации инженеров.</p>
+      </div>
+      <a class="btn btn-empty stub" href="#">Для проектировщиков<svg aria-hidden="true"><use href="#chev"></use></svg></a>
+    </div>
+  </div>
+
+  <!-- 11. Вопросы -->
+  <section class="section" id="faq" aria-labelledby="faq-t">
+    <div class="container">
+      <p class="eyebrow">вопросы</p>
+      <h2 class="section-title" id="faq-t">Вопросы о покупке и подключении</h2>
+      <div class="faq">
+        <details><summary>Нужно ли менять камеры?<span class="pm" aria-hidden="true"></span></summary><p>Обычно нет. Аналитику включают в видеорегистраторе TRASSIR, на отдельном сервере или используют ту, что уже встроена в камеры. Подойдёт ли конкретная камера, инженер проверит по записи с неё. Проще всего загрузить запись в Live Demo.</p></details>
+        <details><summary>На чём работает аналитика?<span class="pm" aria-hidden="true"></span></summary><p>Большинство модулей работает на серверах TRASSIR NeuroStation. Один такой сервер обрабатывает видео с нескольких серверов записи — компьютеров, на которых хранится видео с камер. Детектор вторжения работает прямо в видеорегистраторах TRASSIR серии 4 (MiniNVR и Duo). Детектору вторжения ПРО нужен сервер с операционной системой TRASSIR OS 2.0 и видеокартой NVIDIA.</p></details>
+        <details><summary>Сколько стоит?<span class="pm" aria-hidden="true"></span></summary><p>Стоимость зависит от числа камер и набора модулей. Большинство модулей продаётся как лицензия на одну камеру, некоторые — на кассу, сервер или парковку. Сервер подбирают под число камер и набор детекторов. Расчёт для вашего объекта сделает партнёр или менеджер TRASSIR. Шесть модулей доступны бесплатно.</p></details>
+        <details><summary>Что входит бесплатно?<span class="pm" aria-hidden="true"></span></summary><p>Шесть модулей: ActiveSearch и MultiSearch — поиск по видеоархиву; HeatMaps — подсвечивает места, где недавно было движение; Sound Detector — сообщает, когда звук громче заданного уровня, и включает запись; Fire &amp; Smoke — простой детектор огня и дыма; Sabotage Detector — сообщает, если камеру закрыли, повернули или пропала связь. Кроме того, детектор вторжения входит в программу видеорегистраторов TRASSIR серии 4. Карта перемещений посетителей на плане зала Heat Map on Map — отдельный платный модуль.</p></details>
+        <details><summary>Можно ли попробовать до покупки?<span class="pm" aria-hidden="true"></span></summary><p>Да. Загрузите своё видео в Live Demo, обработка записи занимает 24 часа.</p></details>
+        <details><summary>Можно ли добавить аналитику в уже работающую систему TRASSIR?<span class="pm" aria-hidden="true"></span></summary><p>Да. Для большинства модулей нужны лицензии и сервер TRASSIR NeuroStation, если его ещё нет. Он будет обрабатывать видео с уже работающих серверов записи.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Форма -->
+  <section class="selection section refined-contact solution-selection" id="form" aria-labelledby="form-t"><div class="wrap selection-grid"><div><p class="section-label">Подбор оборудования</p><h2 id="form-t">Опишите задачу —<br>и мы подберем решение<br>под ваш проект</h2><p>От небольшой системы до сложного проекта.<br>Поможем выбрать подходящее решение.</p></div><form id="videoanalytics-request"><div class="form-grid"><label>Имя*<input name="name" autocomplete="name" required placeholder="Как к вам обращаться"></label><label>Телефон*<input name="phone" type="tel" autocomplete="tel" required placeholder="+7 (___) ___-__-__"></label><label>Отрасль<input name="industry" placeholder="Например, розничная торговля"></label><label>Email*<input name="email" type="email" autocomplete="email" required placeholder="name@company.ru"></label></div><p class="form-note">Демонстрационная форма. Данные не отправляются.</p><button class="button" type="button" id="videoanalytics-send">Подобрать оборудование <span aria-hidden="true">↗</span></button><p id="videoanalytics-status" role="status" aria-live="polite" hidden></p></form></div></section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><svg class="logo" role="img" aria-label="TRASSIR"><use href="#logo-trassir"></use></svg><p class="footer-phone">+7 (495) 133-04-61</p></div>
+      <div><h5>Каталог</h5><ul><li><a href="#" class="stub">Программное обеспечение</a></li><li><a href="#" class="stub">Видеоаналитика</a></li><li><a href="#" class="stub">Оборудование</a></li></ul></div>
+      <div><h5>Решения</h5><ul><li><a href="#industries">По отраслям</a></li><li><a href="https://trassir.ru/live-demo/" target="_blank" rel="noopener">Live Demo</a></li><li><a href="#" class="stub">Для проектировщиков</a></li></ul></div>
+      <div><h5>Поддержка</h5><ul><li><a href="#" class="stub">Документация</a></li><li><a href="#" class="stub">Сервисные центры</a></li><li><a href="#form">Заявка</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Вкладки задач
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function select(tab, focus){
+    tabs.forEach(function(t){
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+    tab.scrollIntoView({block:'nearest', inline:'nearest'});
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ select(t); });
+    t.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
+        e.preventDefault();
+        var n = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+        select(tabs[n], true);
+      }
+    });
+  });
+
+  // Ссылки без адреса в макете никуда не ведут
+  document.querySelectorAll('a.stub').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); });
+  });
+
+  // The shared selection form is a local demo; no data leaves the page.
+  var form = document.getElementById('videoanalytics-request');
+  var showDemo = function(){
+    if (!form.reportValidity()) return;
+    var status = document.getElementById('videoanalytics-status');
+    status.hidden = false;
+    status.textContent = 'Это демонстрационная форма. Запрос не отправлен, данные не сохраняются.';
+  };
+  document.getElementById('videoanalytics-send').addEventListener('click', showDemo);
+  form.addEventListener('submit', function(e){ e.preventDefault(); showDemo(); });
+})();
+</script>
+</body>
+</html>

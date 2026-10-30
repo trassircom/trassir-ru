@@ -1,0 +1,45 @@
+/* Cloud only. Product copy, tariffs and photography are preserved. */
+.cloud-page .cloud-hero{gap:56px;padding-block:60px 56px}
+.cloud-page .cloud-hero figure{padding:22px;border:1px solid #cbdce8;border-radius:16px;background:#e8f0f6;box-shadow:10px 10px 0 #f2f6f8}
+.cloud-page .cloud-hero img{border-radius:6px}
+.cloud-page .cloud-facts{padding:32px;margin-bottom:60px;border:0;border-radius:14px;background:#174e79;color:white;gap:0}
+.cloud-page .cloud-facts>div{padding-inline:28px;border-left-color:#547c9c}
+.cloud-page .cloud-facts dt{color:#fff;font-size:38px}
+.cloud-page .cloud-facts dd{color:#e3edf5;font-size:16px;margin-top:14px}
+.cloud-page .cloud-section{padding-block:64px}
+.cloud-page .cloud-ecosystem{border-radius:12px;border-color:#ccdde8;padding-inline:32px}
+.cloud-page .cloud-ecosystem-row{gap:40px;padding-block:34px}
+.cloud-page .cloud-diagram-node{gap:14px;padding:22px 12px;border:1px solid #d6e3eb;border-radius:12px;background:#f5f8fb}
+.cloud-page .cloud-diagram-node .cloud-icon{width:46px;height:46px}
+.cloud-page .cloud-diagram-node span{font-size:15px}
+.cloud-page .cloud-diagram-line{margin-bottom:0}
+.cloud-page .cloud-features{gap:20px 24px}
+.cloud-page .cloud-features li{padding:24px;border:1px solid #d8e4ed;border-radius:12px;background:#f8fafc;font-size:17px;gap:16px}
+.cloud-page .cloud-features .cloud-icon{width:38px;height:38px;padding:8px;border-radius:10px;background:#e8f0f6;margin-top:0}
+.cloud-page .cloud-options-grid{gap:50px}
+.cloud-page .cloud-options-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cloud-page .cloud-options-list li,.cloud-page .cloud-options-list li:first-child,.cloud-page .cloud-options-list li:last-child{padding:22px;border:1px solid #d2e1eb;border-radius:10px;background:white;font-size:17px;align-items:flex-start;gap:14px}
+.cloud-page .cloud-options-list .cloud-icon{width:24px;height:24px;flex-shrink:0;margin-top:2px}
+.cloud-page .cloud-tariffs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;border:0;border-radius:0;overflow:visible;align-items:start}
+.cloud-page .cloud-tariff-group,.cloud-page .cloud-tariff-group+.cloud-tariff-group{border:1px solid #bcd1df;border-radius:12px;overflow:hidden;min-width:0;background:#fff}
+.cloud-page .cloud-tariff-group h3{padding:25px 28px;background:#e8f0f6;font-size:24px;line-height:1.3}
+.cloud-page .cloud-tariff-row{display:block;border-top:1px solid #d7e3ec}
+.cloud-page .cloud-tariff-row dt{padding:24px 28px 0;border-right:0;font-size:20px;line-height:1.4}
+.cloud-page .cloud-tariff-row dd{padding:20px 28px 28px}
+.cloud-page .cloud-tariff-row li{font-size:16px;line-height:1.65}
+.cloud-page .cloud-industry-grid{gap:24px}
+.cloud-page .cloud-industry-grid article{border-radius:12px;border-color:#cfdee8;transition:border-color .18s}
+.cloud-page .cloud-industry-grid article:hover{border-color:#8aacc3}
+.cloud-page .cloud-industry-grid img{aspect-ratio:4/3}
+.cloud-page .cloud-industry-grid h3{padding:24px;font-size:23px}
+.cloud-page .cloud-steps{gap:24px;padding-top:10px}
+.cloud-page .cloud-steps li{font-size:17px;line-height:1.6;padding-top:76px}
+.cloud-page .cloud-steps li::before{background:#174e79;color:white;border:0;border-radius:12px;width:48px;height:48px;font-size:21px}
+.cloud-page .cloud-steps li:not(:last-child)::after{left:48px;top:24px;background:#b8cfdf}
+.cloud-page .cloud-form-layout{gap:56px;align-items:start}
+.cloud-page .cloud-form-fields{gap:20px}
+.cloud-page .cloud-form-note{color:#526c80}
+@media(max-width:1050px){.cloud-page .cloud-hero{gap:32px}.cloud-page .cloud-facts{padding:28px}.cloud-page .cloud-facts>div{padding-inline:20px}.cloud-page .cloud-facts dt{font-size:32px}.cloud-page .cloud-facts dd{font-size:15px}.cloud-page .cloud-ecosystem-row{grid-template-columns:1fr;gap:24px}.cloud-page .cloud-diagram{width:min(500px,100%);grid-template-columns:1fr 64px 1fr}.cloud-page .cloud-options-grid{grid-template-columns:1fr;gap:28px}.cloud-page .cloud-steps{gap:20px}.cloud-page .cloud-steps li{font-size:16px}}
+@media(max-width:760px){.cloud-page .cloud-hero{padding-block:38px 44px;gap:30px}.cloud-page .cloud-hero figure{box-shadow:6px 6px 0 #f2f6f8}.cloud-page .cloud-facts{margin-bottom:46px;gap:28px 0;padding:26px}.cloud-page .cloud-facts dt{font-size:32px}.cloud-page .cloud-section{padding-block:46px}.cloud-page .cloud-features{grid-template-columns:1fr;gap:16px}.cloud-page .cloud-features li:nth-child(n){grid-column:auto;grid-row:auto;padding:22px;font-size:17px}.cloud-page .cloud-tariffs{grid-template-columns:1fr}.cloud-page .cloud-steps{gap:0;padding-top:0}.cloud-page .cloud-steps li{padding:9px 0 34px 72px;font-size:18px}.cloud-page .cloud-steps li:not(:last-child)::after{left:24px;top:48px;right:auto;bottom:0;width:1px;height:auto}.cloud-page .cloud-form-layout{gap:20px}}
+@media(max-width:540px){.cloud-page .cloud-facts{padding:24px 20px}.cloud-page .cloud-facts>div{padding-inline:14px}.cloud-page .cloud-facts dt{font-size:29px}.cloud-page .cloud-facts dd{font-size:14px}.cloud-page .cloud-ecosystem{padding-inline:20px}.cloud-page .cloud-diagram{grid-template-columns:1fr 26px 1fr}.cloud-page .cloud-diagram-node{padding:20px 8px}.cloud-page .cloud-diagram-node span{font-size:14px}.cloud-page .cloud-options-list{grid-template-columns:1fr}.cloud-page .cloud-tariff-group h3{padding:22px;font-size:23px}.cloud-page .cloud-tariff-row dt{padding:22px 22px 0}.cloud-page .cloud-tariff-row dd{padding:18px 22px 24px}.cloud-page .cloud-industry-grid img{aspect-ratio:16/9}.cloud-page .cloud-industry-grid h3{padding:22px}.cloud-page .cloud-features li{gap:14px}}
+@media(prefers-reduced-motion:reduce){.cloud-page .cloud-industry-grid article{transition:none}}

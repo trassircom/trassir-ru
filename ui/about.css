@@ -1,0 +1,161 @@
+/* About page only. Shared navigation and existing pages retain their styles. */
+.about-page main { --about-pale:#f2f6f8; --about-light:#e8f0f6; --about-line:#cadbe7; }
+.about-page main h1 { margin:0 0 26px; font-size:clamp(34px,3.4vw,50px); line-height:1.12; letter-spacing:-1.3px; font-weight:600; }
+.about-page main h2 { margin:0 0 34px; font-size:clamp(28px,2.65vw,38px); line-height:1.2; letter-spacing:-.5px; font-weight:500; text-transform:none; }
+.about-page main h3 { margin:0 0 13px; font-size:24px; line-height:1.3; font-weight:600; }
+.about-page main p { line-height:1.65; }
+.about-page main figure { margin:0; }
+.about-page main :focus-visible { outline:3px solid #2f7eb6; outline-offset:5px; }
+.about-page .breadcrumbs { flex-wrap:wrap; }
+.about-page .about-section { padding:64px 0; }
+.about-page .about-pale { background:var(--about-pale); }
+.about-page .about-eyebrow { color:var(--red); font-size:14px; font-weight:600; letter-spacing:1.5px; margin-bottom:20px; }
+.about-page .about-hero { display:grid; grid-template-columns:1.05fr 1fr; align-items:center; gap:54px; padding-top:60px; padding-bottom:72px; }
+.about-page .about-hero>* { min-width:0; }
+.about-page .about-lead { font-size:21px; max-width:510px; }
+.about-page .about-hero-visual { position:relative; padding:34px 28px 0; background:var(--about-light); border-radius:24px 5px 5px 5px; }
+.about-page .about-monitor { position:relative; padding:9px; background:#25465f; border-radius:7px; width:94%; margin-inline:auto; }
+.about-page .about-monitor::after { content:''; display:block; width:4px; height:4px; border-radius:50%; background:#bdcbd6; margin:6px auto -3px; }
+.about-page .about-monitor img { width:100%; height:auto; border-radius:2px; }
+.about-page .about-hero-devices { position:relative; width:90%; height:auto; margin:-10px auto 0; }
+.about-page .about-facts { border-top:1px solid var(--about-line); padding-top:48px; }
+.about-page .about-facts-list { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:26px; margin:0; }
+.about-page .about-facts-list>div { min-width:0; padding-top:18px; border-top:2px solid #b8cfdf; }
+.about-page .about-facts-list dt { font-size:32px; line-height:1.2; font-weight:600; color:var(--blue); margin-bottom:14px; }
+.about-page .about-facts-list dd { font-size:15px; line-height:1.55; margin:0; max-width:205px; }
+.about-page .about-facts-list>div:last-child dt { font-size:24px; }
+.about-page .about-intro { max-width:1100px; font-size:18px; }
+.about-page .about-intro p+p { margin-top:19px; }
+.about-page .about-ecosystem { --connector:#9cb9ce; margin-top:44px; }
+.about-page .about-ecosystem-row { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:24px; list-style:none; margin:0; padding:0; position:relative; }
+.about-page .about-node { position:relative; min-width:0; background:white; border:1px solid #c8d8e4; border-radius:5px; font-size:16px; line-height:1.4; text-align:center; }
+.about-page .about-node>a,.about-page .about-node>div { display:flex; flex-direction:column; gap:14px; align-items:center; justify-content:center; height:100%; min-height:136px; padding:22px 14px; text-decoration:none; border-radius:4px; }
+.about-page .about-node a { text-decoration:none; }
+.about-page .about-node span { min-width:0; overflow-wrap:anywhere; }
+.about-page .about-node>a:hover { background:#f4f8fb; box-shadow:inset 0 0 0 1px var(--blue); }
+.about-page .about-node a:hover { color:var(--red); }
+.about-page .about-node-split { display:flex; flex-direction:column; gap:14px; align-items:center; justify-content:center; padding:22px 12px; }
+.about-page .about-node-split a { display:inline-block; padding:8px 4px; margin:-8px 0; text-decoration:underline; text-underline-offset:4px; }
+.about-page .about-icon { display:block; flex-shrink:0; width:30px; height:30px; color:var(--blue); }
+.about-page .about-ecosystem-top { padding-bottom:29px; }
+.about-page .about-ecosystem-top .about-node::after { content:''; position:absolute; left:50%; top:100%; height:30px; width:1px; background:var(--connector); }
+.about-page .about-ecosystem-row::after { content:''; position:absolute; left:calc((100% - 96px)/10); right:calc((100% - 96px)/10); height:1px; background:var(--connector); }
+.about-page .about-ecosystem-top::after { bottom:0; }
+.about-page .about-ecosystem-bottom::after { top:0; }
+.about-page .about-ecosystem-bottom { padding-top:29px; }
+.about-page .about-ecosystem-bottom .about-node::before { content:''; position:absolute; left:50%; bottom:100%; height:30px; width:1px; background:var(--connector); }
+.about-page .about-ecosystem-center { position:relative; width:240px; max-width:100%; margin:28px auto; padding:20px; background:var(--blue); color:white; text-align:center; font-size:25px; line-height:1.4; font-weight:700; letter-spacing:2px; border-radius:4px; }
+.about-page .about-ecosystem-center::before,.about-page .about-ecosystem-center::after { content:''; position:absolute; left:50%; width:1px; height:28px; background:var(--connector); }
+.about-page .about-ecosystem-center::before { bottom:100%; }
+.about-page .about-ecosystem-center::after { top:100%; }
+.about-page .about-timeline { list-style:none; margin:0; padding:0; }
+.about-page .about-timeline>li { display:grid; grid-template-columns:200px minmax(0,1fr); gap:50px; }
+.about-page .about-period { padding-top:1px; color:var(--blue); font-size:27px; font-weight:600; }
+.about-page .about-event { position:relative; padding:0 0 40px 38px; border-left:1px solid var(--about-line); }
+.about-page .about-event::before { content:''; position:absolute; left:-6px; top:8px; width:11px; height:11px; border:2px solid var(--red); border-radius:50%; background:white; }
+.about-page .about-timeline>li:last-child .about-event { padding-bottom:0; }
+.about-page .about-event ul { margin:0; padding-left:19px; font-size:17px; }
+.about-page .about-event li { margin:8px 0; padding-left:3px; }
+.about-page .about-event li::marker { color:#87a7bf; }
+.about-page .about-advantages { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:repeat(4,auto); grid-auto-flow:column; gap:30px 80px; list-style:none; margin:0; padding:0; }
+.about-page .about-advantages li { position:relative; font-size:19px; line-height:1.5; padding-top:19px; max-width:470px; }
+.about-page .about-advantages li::before { content:''; position:absolute; top:0; left:0; width:32px; height:2px; background:#7a9eb9; }
+.about-page .about-section-lead { font-size:20px; margin-top:-14px; margin-bottom:34px; }
+.about-page .about-production-layout { display:grid; grid-template-columns:1.2fr 1fr; align-items:center; gap:56px; }
+.about-page .about-production-layout>* { min-width:0; }
+.about-page .about-production-layout figure { overflow:hidden; border-radius:5px; }
+.about-page .about-production-layout img { width:100%; height:auto; aspect-ratio:1.7; object-fit:cover; filter:brightness(1.4); }
+.about-page .about-production-points article { display:flex; align-items:flex-start; gap:20px; margin-bottom:28px; }
+.about-page .about-production-points .about-icon { margin-top:3px; }
+.about-page .about-production-points p { font-size:17px; }
+.about-page .about-text-link { display:inline-flex; align-items:center; gap:18px; font-size:16px; text-decoration:none; padding:10px 0; border-bottom:1px solid #98b3c7; color:var(--blue); }
+.about-page .about-text-link .about-icon { width:20px; height:20px; margin:0; }
+.about-page .about-text-link:hover { color:var(--red); border-color:var(--red); }
+.about-page .about-production-features { margin-top:42px; }
+.about-page .about-production-features>p { font-size:17px; max-width:1050px; }
+.about-page .about-process-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:35px; margin-top:30px; }
+.about-page .about-process-list article { padding-top:22px; border-top:1px solid #aec4d4; }
+.about-page .about-process-list h4 { margin:0 0 14px; font-size:20px; line-height:1.3; color:var(--blue); }
+.about-page .about-process-list p { font-size:16px; }
+.about-page .about-quote-layout { display:grid; grid-template-columns:minmax(0,1fr) 280px; gap:66px; align-items:start; }
+.about-page .about-quote-layout blockquote { margin:0; }
+.about-page .about-quote-layout blockquote p { font-size:18px; line-height:1.75; }
+.about-page .about-quote-layout blockquote footer { margin:26px 0 0; padding:0; color:var(--blue); background:none; border:0; font-size:17px; font-weight:600; }
+.about-page .about-portrait { background:var(--about-light); padding:32px; border-radius:6px; }
+.about-page .about-portrait img { width:218px; max-width:100%; height:auto; border-radius:4px; margin:auto; }
+.about-page .about-cta-placeholder { padding:48px 0 56px; background:#e8edf1; text-align:center; color:#62798a; }
+.about-page .about-cta-placeholder h2 { font-size:15px; font-weight:600; letter-spacing:2px; color:#62798a; margin-bottom:18px; }
+.about-page .about-cta-placeholder p { font-size:16px; }
+@media(max-width:1050px) {
+ .about-page .about-hero { gap:32px; }
+ .about-page .about-lead { font-size:19px; }
+ .about-page .about-hero-visual { padding:25px 16px 0; }
+ .about-page .about-facts-list { grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; }
+ .about-page .about-facts-list dt { font-size:30px; }
+ .about-page .about-ecosystem-row { gap:14px; }
+ .about-page .about-ecosystem-row::after { left:calc((100% - 56px)/10); right:calc((100% - 56px)/10); }
+ .about-page .about-node { font-size:14px; }
+ .about-page .about-node>a,.about-page .about-node>div { padding:20px 10px; }
+ .about-page .about-timeline>li { grid-template-columns:170px minmax(0,1fr); gap:28px; }
+ .about-page .about-period { font-size:25px; }
+ .about-page .about-advantages { column-gap:48px; }
+ .about-page .about-production-layout { gap:30px; }
+ .about-page .about-production-points h3 { font-size:22px; }
+ .about-page .about-quote-layout { grid-template-columns:minmax(0,1fr) 230px; gap:38px; }
+ .about-page .about-portrait { padding:22px; }
+}
+@media(max-width:760px) {
+ .about-page .about-section { padding:48px 0; }
+ .about-page .about-hero { grid-template-columns:1fr; padding-top:40px; padding-bottom:48px; gap:32px; }
+ .about-page .about-hero h1 { max-width:650px; }
+ .about-page .about-hero-visual { max-width:540px; width:100%; justify-self:center; }
+ .about-page .about-hero-devices { width:78%; }
+ .about-page .about-ecosystem { position:relative; display:flex; flex-direction:column; gap:18px; padding-left:24px; }
+ .about-page .about-ecosystem::before { content:''; position:absolute; left:0; top:32px; bottom:38px; width:1px; background:var(--connector); }
+ .about-page .about-ecosystem-center { order:-1; width:100%; margin:0; padding:15px; font-size:24px; }
+ .about-page .about-ecosystem-center::after { display:none; }
+ .about-page .about-ecosystem-center::before { bottom:auto; top:50%; left:-24px; width:24px; height:1px; }
+ .about-page .about-ecosystem-row { grid-template-columns:1fr; gap:12px; padding:0; }
+ .about-page .about-ecosystem-row::after { display:none; }
+ .about-page .about-node>a,.about-page .about-node>div { min-height:76px; flex-direction:row; justify-content:flex-start; gap:20px; padding:18px 22px; text-align:left; }
+ .about-page .about-node { font-size:17px; }
+ .about-page .about-node-split { min-height:76px; flex-direction:row; justify-content:flex-start; gap:20px; padding:18px 22px; }
+ .about-page .about-ecosystem-top .about-node::after,.about-page .about-ecosystem-bottom .about-node::before { left:-25px; top:50%; bottom:auto; height:1px; width:25px; }
+ .about-page .about-timeline>li { grid-template-columns:130px minmax(0,1fr); gap:20px; }
+ .about-page .about-period { font-size:22px; }
+ .about-page .about-event { padding-left:25px; }
+ .about-page .about-event h3 { font-size:22px; }
+ .about-page .about-advantages { gap:28px 30px; }
+ .about-page .about-advantages li { font-size:17px; }
+ .about-page .about-production-layout { grid-template-columns:1fr; }
+ .about-page .about-production-layout figure { max-width:620px; }
+ .about-page .about-process-list { gap:24px; }
+ .about-page .about-process-list h4 { font-size:18px; }
+ .about-page .about-quote-layout { grid-template-columns:minmax(0,1fr) 190px; gap:28px; }
+ .about-page .about-quote-layout blockquote p { font-size:17px; }
+ .about-page .about-portrait { padding:16px; }
+}
+@media(max-width:540px) {
+ .about-page main h1 { font-size:34px; letter-spacing:-.8px; }
+ .about-page main h2 { font-size:29px; margin-bottom:26px; }
+ .about-page .about-section { padding:42px 0; }
+ .about-page .about-facts-list { grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px 20px; }
+ .about-page .about-facts-list dt { font-size:27px; }
+ .about-page .about-facts-list>div:last-child dt { font-size:22px; }
+ .about-page .about-facts-list dd { font-size:14px; }
+ .about-page .about-intro { font-size:17px; }
+ .about-page .about-timeline>li { display:block; position:relative; padding-left:28px; border-left:1px solid var(--about-line); }
+ .about-page .about-period { padding:0 0 13px; }
+ .about-page .about-timeline>li::before { content:''; position:absolute; left:-6px; top:10px; width:11px; height:11px; border:2px solid var(--red); border-radius:50%; background:white; }
+ .about-page .about-event { border:0; padding:0 0 32px; }
+ .about-page .about-event::before { display:none; }
+ .about-page .about-event h3 { font-size:21px; }
+ .about-page .about-event ul { font-size:16px; }
+ .about-page .about-advantages { grid-template-columns:1fr; grid-template-rows:none; grid-auto-flow:row; }
+ .about-page .about-section-lead { font-size:18px; margin-top:0; }
+ .about-page .about-process-list { grid-template-columns:1fr; gap:26px; }
+ .about-page .about-process-list h4 { font-size:20px; }
+ .about-page .about-quote-layout { grid-template-columns:1fr; }
+ .about-page .about-portrait { width:250px; max-width:100%; justify-self:start; }
+ .about-page .about-cta-placeholder h2 { font-size:15px; }
+}

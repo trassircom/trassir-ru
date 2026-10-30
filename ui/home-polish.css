@@ -1,0 +1,26 @@
+/* Homepage v1 only; shared styles and v2 are untouched. */
+.home-page main :is(h1,h2,h3){text-transform:none;letter-spacing:-.025em}
+.home-page main h2{font-size:clamp(28px,3vw,40px);font-weight:600;line-height:1.2}
+.home-page main .home-hero{grid-template-columns:1.05fr 1.15fr;gap:56px;padding-block:64px}
+.home-page main .home-hero h1{font-size:clamp(36px,3.8vw,52px);line-height:1.12;font-weight:600;text-wrap:initial;letter-spacing:-.03em}
+.home-page main .home-hero-brand{display:block;font-size:14px;line-height:1.5;letter-spacing:.08em;margin-bottom:22px;color:var(--blue)}
+.home-page main .home-hero-brand::before{content:'';display:inline-block;vertical-align:middle;width:24px;height:2px;background:var(--red);margin-right:10px}
+.home-page main .home-hero-subline{display:block;font-size:21px;font-weight:400;line-height:1.55;letter-spacing:0;margin-top:24px;max-width:440px}
+.home-page main .home-hero-image{height:400px;margin:18px 0 18px 16px;border-radius:12px}
+.home-page main .home-hero-image::before{inset:-18px 20px -18px -22px;border-radius:28px}
+.home-page main .home-highlights{gap:28px}
+.home-page main .home-highlights p{padding-top:18px;border-top:1px solid #cbdbe6}
+.home-page main .home-highlights .home-icon-badge{background:#fff}
+.home-page main .home-product-inner{padding-block:64px}
+.home-page main .home-tasks dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.home-page main .home-tasks dl>div{display:block;padding:26px;background:#fff;border:1px solid #dce6ed;border-radius:12px}
+.home-page main .home-tasks dt{align-items:flex-start;font-size:21px;margin-bottom:18px}
+.home-page main .home-tasks dd{padding:0;font-size:16px}
+.home-page main .home-growth{border-left:3px solid var(--red);border-radius:0 12px 12px 0}
+.home-page main .industry-link{border:1px solid #e0e8ee;background:#fff;transition:background .18s,border-color .18s}
+.home-page main .industry-link:hover{background:#f2f6f8;border-color:#9cb7cb}
+.home-page main .home-buy{border-block:1px solid #d2dfe9}
+.home-page main .button{border-radius:6px;font-weight:600}
+.home-page main .home-contact input{border-radius:6px;background:#f9fbfc}
+@media(max-width:1050px){.home-page main .home-hero{gap:32px}.home-page main .home-hero-image{height:360px}}
+@media(max-width:700px){.home-page main .home-hero{grid-template-columns:1fr;padding-block:38px 48px;gap:30px}.home-page main .home-hero h1{font-size:clamp(31px,7.5vw,42px)}.home-page main .home-hero-subline{font-size:18px}.home-page main .home-hero-image{height:300px;margin:14px 0 14px 16px}.home-page main .home-product-inner{padding-block:42px}.home-page main .home-tasks dl{grid-template-columns:1fr}.home-page main .home-tasks dl>div{padding:22px}.home-page main .home-highlights{gap:22px}}

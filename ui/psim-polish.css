@@ -1,0 +1,42 @@
+/* PSIM only. */
+.psim-page .psim-hero{gap:56px;padding-block:60px 66px}
+.psim-page .psim-hero figure{padding:22px;border:1px solid #c9dce8;border-radius:16px;background:#e8f0f6;box-shadow:10px 10px 0 #f2f6f8}
+.psim-page .psim-hero img{border-radius:6px}
+.psim-page .psim-feature-list{grid-template-columns:repeat(6,minmax(0,1fr));gap:22px}
+.psim-page .psim-feature-list li{grid-column:span 2;padding:26px;border:1px solid #d5e2ec;border-radius:12px;background:#f7fafc}
+.psim-page .psim-feature-list li:nth-child(n+4){grid-column:span 3}
+.psim-page .psim-icon-box{border-radius:12px}
+.psim-page .psim-feature-list p{font-size:17px;margin-top:20px}
+.psim-page .psim-task-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.psim-page .psim-task-list li{position:relative;grid-template-columns:48px minmax(0,1fr);gap:18px;padding:26px;border:1px solid #d6e3ec;border-radius:12px;background:#fff}
+.psim-page .psim-task-list li::before{position:absolute;top:17px;right:20px;font-size:12px;color:#7c94a5;padding:0}
+.psim-page .psim-task-list li>.polish-icon-badge{grid-column:1;grid-row:1}
+.psim-page .psim-task-list p{grid-column:2;font-size:17px;line-height:1.65;padding-right:10px}
+.psim-page .psim-task-list strong{display:block;font-size:20px;line-height:1.4;margin-bottom:9px}
+.psim-page .psim-screenshot{padding:14px;border-radius:12px;border-color:#bcd1e0;box-shadow:0 8px 24px #174e7908}
+.psim-page .psim-screenshot img{border-radius:5px}
+.psim-page .psim-report-layout{gap:48px}
+.psim-page .psim-report-layout .psim-screenshot{background:#edf3f7;padding:18px}
+.psim-page .psim-report-layout li{padding-block:22px;font-size:18px}
+.psim-page .psim-report-layout li::before{top:34px}
+.psim-page .psim-flow{border:1px solid #cfdee8;border-radius:14px;background:#eaf1f6;padding:32px;gap:48px}
+.psim-page .psim-flow-node{border-radius:10px;padding:28px;min-height:178px}
+.psim-page .psim-flow-node+.psim-flow-node::before{left:-49px;width:48px}
+.psim-page .psim-systems-grid{gap:20px}
+.psim-page .psim-systems-grid article{padding:24px 20px;border-radius:12px;border-color:#d1e1eb;background:#f8fafc}
+.psim-page .psim-systems-grid .polish-icon-badge{margin-bottom:20px}
+.psim-page .psim-systems-grid h3{font-size:22px;margin-bottom:16px}
+.psim-page .psim-benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.psim-page .psim-benefits li{padding:26px;border:1px solid #d5e2ec;border-radius:12px;background:#f3f7fa;grid-template-columns:36px minmax(0,1fr);gap:20px}
+.psim-page .psim-benefits li::before{font-size:30px}
+.psim-page .psim-benefits p{font-size:18px;padding:0}
+.psim-page .psim-license-grid{gap:48px}
+.psim-page .psim-license-grid>div{padding:28px;border-left:3px solid #90aebf;border-radius:0 10px 10px 0;background:#e8f0f6}
+.psim-page .psim-consultation>.wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.psim-page .psim-consult-copy{padding-top:8px}
+.psim-page .psim-form-intro{color:#d4e2ed;margin-top:20px}
+.psim-page .psim-form-grid{grid-template-columns:1fr;gap:20px}
+.psim-page .psim-form-note{color:#526c80}
+@media(max-width:1050px){.psim-page .psim-hero{gap:32px}.psim-page .psim-feature-list{gap:18px}.psim-page .psim-feature-list li{padding:24px}.psim-page .psim-task-list li{padding:24px;gap:16px}.psim-page .psim-flow{gap:32px;padding:24px}.psim-page .psim-flow-node{padding:22px}.psim-page .psim-flow-node+.psim-flow-node::before{left:-33px;width:32px}}
+@media(max-width:760px){.psim-page .psim-hero{padding-block:38px 48px}.psim-page .psim-hero figure{box-shadow:6px 6px 0 #f2f6f8}.psim-page .psim-feature-list{grid-template-columns:repeat(2,minmax(0,1fr))}.psim-page .psim-feature-list li,.psim-page .psim-feature-list li:nth-child(n+4){grid-column:auto}.psim-page .psim-task-list,.psim-page .psim-benefits{grid-template-columns:1fr}.psim-page .psim-flow{grid-template-columns:1fr;gap:30px}.psim-page .psim-flow-node{min-height:110px}.psim-page .psim-flow-node+.psim-flow-node::before{left:50%;top:-31px;width:2px;height:30px}.psim-page .psim-license-grid{gap:0}.psim-page .psim-consultation>.wrap{grid-template-columns:1fr;gap:20px}.psim-page .psim-form-intro{margin-bottom:8px}}
+@media(max-width:540px){.psim-page .psim-feature-list{grid-template-columns:1fr;gap:14px}.psim-page .psim-feature-list li{display:flex;align-items:flex-start;gap:18px;padding:22px}.psim-page .psim-feature-list .psim-icon-box{flex-shrink:0}.psim-page .psim-feature-list p{margin:0;font-size:16px}.psim-page .psim-task-list li{padding:24px 20px;grid-template-columns:40px minmax(0,1fr);gap:14px}.psim-page .psim-task-list .polish-icon-badge{width:40px;height:40px}.psim-page .psim-task-list p{padding-right:0;font-size:16px}.psim-page .psim-task-list strong{font-size:19px}.psim-page .psim-screenshot{padding:8px}.psim-page .psim-flow{padding:18px}.psim-page .psim-systems-grid article{padding:20px 16px}.psim-page .psim-benefits li{padding:24px 20px}.psim-page .psim-license-grid>div{padding:24px}}

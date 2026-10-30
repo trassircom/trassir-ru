@@ -1,0 +1,139 @@
+/* All new presentation styles stay within the Cloud page. */
+.cloud-page main { --cloud-pale:#f2f6f8; --cloud-line:#dbe5ec; }
+.cloud-page main h1 { font-size:clamp(38px,3.65vw,54px); font-weight:600; line-height:1.1; letter-spacing:-1.4px; margin:0 0 26px; }
+.cloud-page main h2 { font-size:clamp(29px,2.65vw,38px); line-height:1.2; font-weight:500; text-transform:none; letter-spacing:-.5px; margin:0 0 32px; }
+.cloud-page main h3 { font-size:22px; line-height:1.35; margin:0; }
+.cloud-page main p { line-height:1.65; }
+.cloud-page main figure { margin:0; }
+.cloud-page main :focus-visible { outline:3px solid #2f7eb6; outline-offset:5px; }
+.cloud-page .breadcrumbs { flex-wrap:wrap; font-size:13px; }
+.cloud-page .cloud-hero { display:grid; grid-template-columns:.95fr 1.05fr; gap:54px; align-items:center; padding:62px 0 64px; }
+.cloud-page .cloud-hero>* { min-width:0; }
+.cloud-page .cloud-hero p { font-size:20px; max-width:500px; }
+.cloud-page .cloud-hero figure { background:#e8f0f6; padding:26px 18px; border-radius:22px 4px 4px 4px; }
+.cloud-page .cloud-hero img { width:100%; height:auto; border:1px solid #cedce5; border-radius:4px; }
+.cloud-page .cloud-facts { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); margin:0; padding:32px 0 56px; border-top:1px solid var(--cloud-line); gap:0; }
+.cloud-page .cloud-facts>div { min-width:0; padding:0 30px; border-left:1px solid var(--cloud-line); }
+.cloud-page .cloud-facts>div:first-child { padding-left:0; border-left:0; }
+.cloud-page .cloud-facts>div:last-child { padding-right:0; }
+.cloud-page .cloud-facts dt { font-size:40px; font-weight:600; line-height:1.1; letter-spacing:-.7px; color:var(--blue); white-space:nowrap; }
+.cloud-page .cloud-facts dd { margin:12px 0 0; line-height:1.5; max-width:210px; }
+.cloud-page .cloud-section { padding:64px 0; }
+.cloud-page .cloud-pale { background:var(--cloud-pale); }
+.cloud-page .cloud-lead { max-width:1010px; font-size:19px; margin-bottom:32px; }
+.cloud-page .cloud-ecosystem { background:white; border:1px solid var(--cloud-line); border-radius:6px; padding:0 32px; }
+.cloud-page .cloud-ecosystem-row { display:grid; grid-template-columns:.85fr 1.15fr; gap:48px; align-items:center; padding:32px 0; }
+.cloud-page .cloud-ecosystem-row+.cloud-ecosystem-row { border-top:1px solid var(--cloud-line); }
+.cloud-page .cloud-ecosystem-row>p { font-size:17px; }
+.cloud-page .cloud-diagram { display:grid; grid-template-columns:1fr 64px 1fr; align-items:center; min-width:0; }
+.cloud-page .cloud-diagram-node { display:flex; flex-direction:column; align-items:center; gap:12px; color:var(--blue); text-align:center; }
+.cloud-page .cloud-diagram-node span { font-size:16px; font-weight:600; }
+.cloud-page .cloud-diagram-node .cloud-icon { width:56px; height:56px; }
+.cloud-page .cloud-diagram-line { display:block; height:2px; position:relative; background:#a9bfce; margin-bottom:36px; }
+.cloud-page .cloud-diagram-line::after { content:''; position:absolute; width:8px; height:8px; right:0; top:-3px; border-top:2px solid #a9bfce; border-right:2px solid #a9bfce; transform:rotate(45deg); }
+.cloud-page .cloud-icon { display:block; width:24px; height:24px; flex-shrink:0; color:var(--blue); }
+.cloud-page .cloud-features { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 66px; }
+.cloud-page .cloud-features li { display:flex; align-items:flex-start; gap:18px; min-width:0; padding:23px 0; border-top:1px solid var(--cloud-line); font-size:18px; line-height:1.6; }
+.cloud-page .cloud-features .cloud-icon { width:22px; height:22px; margin-top:3px; }
+.cloud-page .cloud-features li:nth-child(-n+4) { grid-column:1; }
+.cloud-page .cloud-features li:nth-child(n+5) { grid-column:2; }
+.cloud-page .cloud-features li:nth-child(1),.cloud-page .cloud-features li:nth-child(5) { grid-row:1; }
+.cloud-page .cloud-features li:nth-child(2),.cloud-page .cloud-features li:nth-child(6) { grid-row:2; }
+.cloud-page .cloud-features li:nth-child(3),.cloud-page .cloud-features li:nth-child(7) { grid-row:3; }
+.cloud-page .cloud-features li:nth-child(4),.cloud-page .cloud-features li:nth-child(8) { grid-row:4; }
+.cloud-page .cloud-options-grid { display:grid; grid-template-columns:.65fr 1.35fr; gap:64px; }
+.cloud-page .cloud-options-grid h2 { margin:0; }
+.cloud-page .cloud-options-list { list-style:none; padding:0; margin:0; }
+.cloud-page .cloud-options-list li { display:flex; align-items:center; gap:18px; padding:14px 0; border-bottom:1px solid #d7e2e9; font-size:19px; }
+.cloud-page .cloud-options-list li:first-child { padding-top:0; }
+.cloud-page .cloud-options-list li:last-child { border-bottom:0; padding-bottom:0; }
+.cloud-page .cloud-options-list .cloud-icon { width:21px; height:21px; }
+.cloud-page .cloud-tariffs { border:1px solid #cbdbe5; border-radius:6px; overflow:hidden; }
+.cloud-page .cloud-tariff-group+.cloud-tariff-group { border-top:1px solid #cbdbe5; }
+.cloud-page .cloud-tariff-group h3 { padding:22px 28px; background:#e8f0f6; font-size:23px; font-weight:600; }
+.cloud-page .cloud-tariff-group dl { margin:0; }
+.cloud-page .cloud-tariff-row { display:grid; grid-template-columns:280px minmax(0,1fr); border-top:1px solid #cbdbe5; }
+.cloud-page .cloud-tariff-row dt { font-weight:600; font-size:18px; color:var(--blue); padding:26px 28px; border-right:1px solid #cbdbe5; }
+.cloud-page .cloud-tariff-row dd { margin:0; padding:26px 28px; }
+.cloud-page .cloud-tariff-row ul { margin:0; padding-left:20px; }
+.cloud-page .cloud-tariff-row li { padding-left:3px; margin:0 0 12px; font-size:17px; }
+.cloud-page .cloud-tariff-row li:last-child { margin-bottom:0; }
+.cloud-page .cloud-tariff-row li::marker { color:var(--blue); }
+.cloud-page .cloud-industry-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px; }
+.cloud-page .cloud-industry-grid article { min-width:0; background:white; border:1px solid var(--cloud-line); border-radius:6px; overflow:hidden; }
+.cloud-page .cloud-industry-grid img { width:100%; aspect-ratio:4 / 3; height:auto; object-fit:cover; }
+.cloud-page .cloud-industry-grid h3 { font-size:22px; padding:24px; }
+.cloud-page .cloud-steps { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:24px; list-style:none; padding:8px 0 0; margin:0; counter-reset:cloud-step; }
+.cloud-page .cloud-steps li { position:relative; min-width:0; counter-increment:cloud-step; padding-top:74px; font-size:17px; line-height:1.5; }
+.cloud-page .cloud-steps li::before { content:counter(cloud-step); position:absolute; top:0; left:0; width:44px; height:44px; border:1px solid #9cb7ca; border-radius:50%; display:grid; place-items:center; font-size:20px; font-weight:600; color:var(--blue); background:white; z-index:1; }
+.cloud-page .cloud-steps li:not(:last-child)::after { content:''; position:absolute; left:44px; right:-24px; top:22px; height:1px; background:#9cb7ca; }
+.cloud-page .cloud-consultation { padding:64px 0 72px; scroll-margin-top:30px; }
+.cloud-page .cloud-form-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; }
+.cloud-page .cloud-form-layout>* { min-width:0; }
+.cloud-page .cloud-form-layout h2 { max-width:440px; }
+.cloud-page .cloud-form-fields { display:grid; gap:24px; }
+.cloud-page .cloud-form-fields label { display:block; min-width:0; color:var(--ink); font-size:15px; }
+.cloud-page .cloud-form-fields input { width:100%; min-width:0; min-height:52px; padding:12px 14px; margin-top:8px; border:1px solid #c9d6df; border-radius:3px; font:16px/1.4 Arial,sans-serif; }
+.cloud-page .cloud-form-fields input:focus { border-color:var(--blue); }
+.cloud-page .cloud-form-note { margin:24px 0 20px; font-size:14px; color:#617888; }
+.cloud-page .cloud-consultation .button { width:100%; justify-content:center; }
+.cloud-page #cloud-status { padding:16px 20px; margin-top:20px; border-left:3px solid var(--blue); background:white; }
+@media(max-width:1050px) {
+ .cloud-page .cloud-hero { gap:32px; }
+ .cloud-page .cloud-hero p { font-size:18px; }
+ .cloud-page .cloud-facts>div { padding-inline:22px; }
+ .cloud-page .cloud-facts dt { font-size:34px; }
+ .cloud-page .cloud-facts dd { font-size:15px; }
+ .cloud-page .cloud-ecosystem { padding-inline:24px; }
+ .cloud-page .cloud-ecosystem-row { gap:30px; grid-template-columns:.9fr 1.1fr; }
+ .cloud-page .cloud-diagram { grid-template-columns:1fr 36px 1fr; }
+ .cloud-page .cloud-features { column-gap:38px; }
+ .cloud-page .cloud-options-grid { gap:40px; }
+ .cloud-page .cloud-industry-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .cloud-page .cloud-steps { gap:20px; }
+ .cloud-page .cloud-steps li { font-size:15px; }
+ .cloud-page .cloud-steps li:not(:last-child)::after { right:-20px; }
+ .cloud-page .cloud-form-layout { gap:44px; }
+}
+@media(max-width:760px) {
+ .cloud-page main h1 { font-size:clamp(32px,6.2vw,46px); letter-spacing:-.8px; }
+ .cloud-page .cloud-hero { grid-template-columns:1fr; padding:38px 0 44px; gap:32px; }
+ .cloud-page .cloud-hero p { max-width:none; }
+ .cloud-page .cloud-facts { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 0; padding-bottom:44px; }
+ .cloud-page .cloud-facts>div:nth-child(3) { padding-left:0; border-left:0; }
+ .cloud-page .cloud-facts>div:nth-child(even) { padding-right:0; }
+ .cloud-page .cloud-section { padding:48px 0; }
+ .cloud-page .cloud-lead { font-size:18px; }
+ .cloud-page .cloud-ecosystem-row { grid-template-columns:1fr; gap:24px; padding-block:28px; }
+ .cloud-page .cloud-diagram { max-width:400px; width:100%; grid-template-columns:1fr 60px 1fr; }
+ .cloud-page .cloud-diagram-node .cloud-icon { width:48px; height:48px; }
+ .cloud-page .cloud-options-grid { grid-template-columns:1fr; gap:28px; }
+ .cloud-page .cloud-tariff-row { grid-template-columns:210px minmax(0,1fr); }
+ .cloud-page .cloud-tariff-group h3 { padding:20px 22px; font-size:22px; }
+ .cloud-page .cloud-tariff-row dt,.cloud-page .cloud-tariff-row dd { padding:22px; }
+ .cloud-page .cloud-steps { grid-template-columns:1fr; gap:0; padding:0; }
+ .cloud-page .cloud-steps li { padding:8px 0 34px 68px; min-height:72px; font-size:18px; }
+ .cloud-page .cloud-steps li:last-child { padding-bottom:0; }
+ .cloud-page .cloud-steps li:not(:last-child)::after { left:22px; top:44px; height:auto; width:1px; right:auto; bottom:0; }
+ .cloud-page .cloud-form-layout { grid-template-columns:1fr; gap:0; }
+ .cloud-page .cloud-form-layout h2 { max-width:none; }
+ .cloud-page .cloud-consultation { padding:48px 0; }
+}
+@media(max-width:540px) {
+ .cloud-page .breadcrumbs { font-size:12px; gap:8px; }
+ .cloud-page .cloud-hero figure { padding:18px 12px; }
+ .cloud-page .cloud-facts dt { font-size:32px; }
+ .cloud-page .cloud-facts>div { padding-inline:18px; }
+ .cloud-page .cloud-features { grid-template-columns:1fr; gap:0; }
+ .cloud-page .cloud-features li:nth-child(n) { grid-column:auto; grid-row:auto; font-size:17px; padding:20px 0; }
+ .cloud-page .cloud-ecosystem { padding-inline:20px; }
+ .cloud-page .cloud-diagram { grid-template-columns:1fr 28px 1fr; }
+ .cloud-page .cloud-diagram-node span { font-size:15px; }
+ .cloud-page .cloud-tariff-row { grid-template-columns:1fr; }
+ .cloud-page .cloud-tariff-row dt { padding:20px 20px 0; border-right:0; }
+ .cloud-page .cloud-tariff-row dd { padding:16px 20px 24px; }
+ .cloud-page .cloud-tariff-group h3 { padding:20px; }
+ .cloud-page .cloud-industry-grid { grid-template-columns:1fr; gap:22px; }
+ .cloud-page .cloud-industry-grid img { aspect-ratio:16 / 9; }
+ .cloud-page .cloud-industry-grid h3 { padding:20px; }
+}

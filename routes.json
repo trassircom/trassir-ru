@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Главная v1",
+    "path": "index.html"
+  },
+  {
+    "title": "Розничная торговля",
+    "path": "decision/videoanalitika-dlya-roznichnoy-torgovli/index.html"
+  },
+  {
+    "title": "Склады и логистика",
+    "path": "decision/videoanalitika-dlya-skladskoy-logistiki/index.html"
+  },
+  {
+    "title": "Гостиничный бизнес",
+    "path": "decision/videoanalitika-dlya-gostinichnogo-biznesa/index.html"
+  },
+  {
+    "title": "Промышленность и производство",
+    "path": "decision/videoanalitika-dlya-predpriyatiy-i-promyshlennykh-obektov/index.html"
+  },
+  {
+    "title": "Рестораны и кафе",
+    "path": "decision/videoanalitika-dlya-restoranov-i-kafe/index.html"
+  },
+  {
+    "title": "Банки и финансовые организации",
+    "path": "decision/videoanalitika-dlya-bankov-i-finansovogo-sektora/index.html"
+  },
+  {
+    "title": "Торговые центры",
+    "path": "decision/dlya-torgovykh-tsentrov/index.html"
+  },
+  {
+    "title": "Государственные учреждения",
+    "path": "decision/videoanalitika-dlya-gosudarstvennykh-munitsipalnykh-obrazovatelnykh-kulturnykh-sportivnykh-i-meditsi/index.html"
+  },
+  {
+    "title": "Проектным организациям",
+    "path": "services/uslugi-dlya-proektnykh-organizatsiy/index.html"
+  },
+  {
+    "title": "Центр обучения TRASSIR",
+    "path": "training_center/index.html"
+  },
+  {
+    "title": "О компании",
+    "path": "about/index.html"
+  },
+  {
+    "title": "Система управления видеонаблюдением",
+    "path": "products/vms/index.html"
+  },
+  {
+    "title": "Облачные технологии",
+    "path": "products/cloud/index.html"
+  },
+  {
+    "title": "PSIM",
+    "path": "products/psim/index.html"
+  },
+  {
+    "title": "Видеоаналитика",
+    "path": "products/videoanalytics/index.html"
+  },
+  {
+    "title": "CMS",
+    "path": "products/cms/index.html"
+  },
+  {
+    "title": "СКУД",
+    "path": "products/skud/index.html"
+  },
+  {
+    "title": "Сетевое оборудование",
+    "path": "products/network/index.html"
+  },
+  {
+    "title": "Регистраторы",
+    "path": "products/recorders/index.html"
+  },
+  {
+    "title": "Камеры",
+    "path": "products/cameras/index.html"
+  },
+  {
+    "title": "Главная старая",
+    "path": "home-old/index.html"
+  },
+  {
+    "title": "Главная v2",
+    "path": "home-v2/index.html"
+  },
+  {
+    "title": "Партнерская программа",
+    "path": "partners/partnership-program/index.html"
+  },
+  {
+    "title": "Собственное производство",
+    "path": "about/production/index.html"
+  }
+]
