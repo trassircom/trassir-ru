@@ -1,102 +1,102 @@
 [
   {
     "title": "Главная v1",
-    "path": "index.html"
+    "path": "/"
   },
   {
     "title": "Розничная торговля",
-    "path": "decision/videoanalitika-dlya-roznichnoy-torgovli/index.html"
+    "path": "/decision/videoanalitika-dlya-roznichnoy-torgovli/"
   },
   {
     "title": "Склады и логистика",
-    "path": "decision/videoanalitika-dlya-skladskoy-logistiki/index.html"
+    "path": "/decision/videoanalitika-dlya-skladskoy-logistiki/"
   },
   {
     "title": "Гостиничный бизнес",
-    "path": "decision/videoanalitika-dlya-gostinichnogo-biznesa/index.html"
+    "path": "/decision/videoanalitika-dlya-gostinichnogo-biznesa/"
   },
   {
     "title": "Промышленность и производство",
-    "path": "decision/videoanalitika-dlya-predpriyatiy-i-promyshlennykh-obektov/index.html"
+    "path": "/decision/videoanalitika-dlya-predpriyatiy-i-promyshlennykh-obektov/"
   },
   {
     "title": "Рестораны и кафе",
-    "path": "decision/videoanalitika-dlya-restoranov-i-kafe/index.html"
+    "path": "/decision/videoanalitika-dlya-restoranov-i-kafe/"
   },
   {
     "title": "Банки и финансовые организации",
-    "path": "decision/videoanalitika-dlya-bankov-i-finansovogo-sektora/index.html"
+    "path": "/decision/videoanalitika-dlya-bankov-i-finansovogo-sektora/"
   },
   {
     "title": "Торговые центры",
-    "path": "decision/dlya-torgovykh-tsentrov/index.html"
+    "path": "/decision/dlya-torgovykh-tsentrov/"
   },
   {
     "title": "Государственные учреждения",
-    "path": "decision/videoanalitika-dlya-gosudarstvennykh-munitsipalnykh-obrazovatelnykh-kulturnykh-sportivnykh-i-meditsi/index.html"
+    "path": "/decision/videoanalitika-dlya-gosudarstvennykh-munitsipalnykh-obrazovatelnykh-kulturnykh-sportivnykh-i-meditsi/"
   },
   {
     "title": "Проектным организациям",
-    "path": "services/uslugi-dlya-proektnykh-organizatsiy/index.html"
+    "path": "/services/uslugi-dlya-proektnykh-organizatsiy/"
   },
   {
     "title": "Центр обучения TRASSIR",
-    "path": "training_center/index.html"
+    "path": "/training_center/"
   },
   {
     "title": "О компании",
-    "path": "about/index.html"
+    "path": "/about/"
   },
   {
     "title": "Система управления видеонаблюдением",
-    "path": "products/vms/index.html"
+    "path": "/products/vms/"
   },
   {
     "title": "Облачные технологии",
-    "path": "products/cloud/index.html"
+    "path": "/products/cloud/"
   },
   {
     "title": "PSIM",
-    "path": "products/psim/index.html"
+    "path": "/products/psim/"
   },
   {
     "title": "Видеоаналитика",
-    "path": "products/videoanalytics/index.html"
+    "path": "/products/videoanalytics/"
   },
   {
     "title": "CMS",
-    "path": "products/cms/index.html"
+    "path": "/products/cms/"
   },
   {
     "title": "СКУД",
-    "path": "products/skud/index.html"
+    "path": "/products/skud/"
   },
   {
     "title": "Сетевое оборудование",
-    "path": "products/network/index.html"
+    "path": "/products/network/"
   },
   {
     "title": "Регистраторы",
-    "path": "products/recorders/index.html"
+    "path": "/products/recorders/"
   },
   {
     "title": "Камеры",
-    "path": "products/cameras/index.html"
+    "path": "/products/cameras/"
   },
   {
     "title": "Главная старая",
-    "path": "home-old/index.html"
+    "path": "/home-old/"
   },
   {
     "title": "Главная v2",
-    "path": "home-v2/index.html"
+    "path": "/home-v2/"
   },
   {
     "title": "Партнерская программа",
-    "path": "partners/partnership-program/index.html"
+    "path": "/partners/partnership-program/"
   },
   {
     "title": "Собственное производство",
-    "path": "about/production/index.html"
+    "path": "/about/production/"
   }
 ]

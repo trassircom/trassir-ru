@@ -1,0 +1,60 @@
+/* Only the requested About-page components. Source pages remain unchanged. */
+.about-page main .ecosystem-map { max-width:1100px; margin-inline:auto; }
+.about-page main .ecosystem-map .eco-details h3 { font-size:22px; line-height:1.35; font-weight:700; letter-spacing:-.6px; margin:0 0 10px; }
+.about-page main .ecosystem-map .eco-details p { font-size:16px; line-height:1.6; margin:0; }
+.about-page main .ecosystem-map .eco-origin { font-size:15px; line-height:1.5; margin:20px 0 0; }
+
+/* Exact camera-page production component, including its compact proportions. */
+.about-page main #production { padding-block:64px; }
+.about-page main #production :is(h2,h3,h4) { text-transform:none; letter-spacing:-.025em; overflow-wrap:break-word; font-weight:600; }
+.about-page main #production h2 { font-size:clamp(28px,2.9vw,40px); line-height:1.2; margin:0 0 24px; }
+.about-page main #production :is(article,figure) { min-width:0; }
+.about-page main #production .section-label { font-size:12px; line-height:1.6; letter-spacing:1.8px; color:#647e91; gap:12px; }
+.about-page main #production .section-label::before { width:24px; height:2px; }
+.about-page main #production .production-copy .about-section-lead { font-size:20px; margin:0 0 32px; }
+.about-page main #production .production-copy .about-production-layout { display:grid; grid-template-columns:1.2fr 1fr; align-items:center; gap:56px; }
+.about-page main #production .production-copy figure { margin:0; border-radius:8px; overflow:hidden; }
+.about-page main #production .production-copy figure img { width:100%; height:auto; aspect-ratio:1.7; object-fit:cover; filter:brightness(1.4); }
+.about-page main #production .production-copy .about-production-points article { display:flex; gap:20px; align-items:flex-start; margin-bottom:28px; }
+.about-page main #production .production-copy .about-icon { display:block; width:30px; height:30px; color:var(--blue); flex-shrink:0; margin-top:3px; }
+.about-page main #production .production-copy h3 { font-size:24px; line-height:1.3; margin:0 0 13px; }
+.about-page main #production .production-copy p { font-size:16px; line-height:1.65; }
+.about-page main #production .production-copy .about-text-link { display:inline-flex; gap:18px; align-items:center; padding:10px 0; border-bottom:1px solid #98b3c7; text-decoration:none; font-size:16px; color:inherit; }
+.about-page main #production .production-copy .about-text-link:hover { color:inherit; border-color:#98b3c7; }
+.about-page main #production .production-copy .about-text-link .about-icon { width:20px; height:20px; margin:0; }
+.about-page main #production .production-copy .about-production-features { margin-top:42px; }
+.about-page main #production .production-copy .about-production-features>p { max-width:1050px; font-size:17px; }
+.about-page main #production .production-copy .about-process-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:35px; margin-top:30px; }
+.about-page main #production .production-copy .about-process-list article { padding-top:22px; border-top:1px solid #aec4d4; }
+.about-page main #production .production-copy h4 { font-size:20px; font-weight:700; line-height:1.3; color:var(--blue); margin:0 0 14px; }
+.about-page main #production .quality { margin-top:44px; border-top:1px solid #d4e0e9; padding-top:36px; }
+.about-page main #production .quality ol { gap:24px; }
+.about-page main #production .quality li { background:#f2f6f8; border:0; border-radius:8px; padding:22px; gap:14px; }
+.about-page main #production .quality li span { font-size:20px; }
+.about-page main #production .quality li p { line-height:1.6; }
+@media(max-width:1050px) {
+ .about-page main #production .production-copy .about-production-layout { gap:30px; }
+}
+@media(min-width:1001px) {
+ .about-page main #production { width:min(1100px,calc(100% - 64px)); padding-block:48px; }
+ .about-page main #production h2 { font-size:32px; }
+ .about-page main #production .quality { margin-top:32px; padding-top:28px; }
+ .about-page main #production .quality ol { margin-top:28px; gap:20px; }
+}
+@media(max-width:760px) {
+ .about-page main #production .production-copy .about-production-layout { grid-template-columns:1fr; }
+ .about-page main #production .production-copy .about-process-list { gap:24px; }
+}
+@media(max-width:700px) {
+ .about-page main #production { padding-block:44px; }
+}
+@media(max-width:540px) {
+ .about-page main #production .production-copy .about-process-list { grid-template-columns:1fr; }
+ .about-page main #production .production-copy .about-section-lead { font-size:18px; }
+ .about-page main #production .production-copy h3 { font-size:22px; }
+ .about-page main .ecosystem-map .eco-details h3 { font-size:20px; }
+ .about-page main .ecosystem-map .eco-details p { font-size:15px; }
+}
+
+.about-page .about-quote-layout blockquote { text-align:right; }
+.about-page .about-quote-layout blockquote p { font-style:italic; }

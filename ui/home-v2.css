@@ -40,7 +40,7 @@
 .home-v2 .v2-hero-visual { position:relative; isolation:isolate; margin:18px 0 18px 16px; }
 .home-v2 .v2-hero-visual::before { content:''; position:absolute; inset:-18px 20px -18px -22px; z-index:-1; border-radius:28px; background:var(--v2-tint); }
 .home-v2 .v2-hero-visual img { display:block; width:100%; height:auto; border-radius:var(--v2-radius); }
-.home-v2 .v2-advantages { background:var(--v2-soft); }
+.home-v2 .v2-advantages { background:var(--v2-soft); margin-bottom:36px; }
 .home-v2 .v2-arguments { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; list-style:none; padding:32px 0; margin-block:0; }
 .home-v2 .v2-arguments li { display:grid; grid-template-columns:52px minmax(0,1fr); gap:0 16px; align-content:start; }
 .home-v2 .v2-arguments li + li { border-left:1px solid var(--v2-line); padding-left:28px; }
@@ -129,7 +129,7 @@
 .home-v2 .v2-production { background:var(--v2-soft); }
 .home-v2 .v2-production-inner { display:grid; grid-template-columns:1.05fr 1fr; gap:0 48px; align-items:start; }
 .home-v2 .v2-production-inner > .v2-heading { grid-column:1/-1; }
-.home-v2 .v2-production-photo img { display:block; width:100%; height:auto; border-radius:var(--v2-radius); filter:brightness(1.72) contrast(.96); }
+.home-v2 .v2-production-photo img { display:block; width:100%; height:auto; border-radius:var(--v2-radius); filter:none; }
 .home-v2 .v2-production-facts { display:grid; gap:24px; }
 .home-v2 .v2-production-facts article { display:grid; grid-template-columns:52px minmax(0,1fr); gap:0 18px; }
 .home-v2 .v2-production-facts .v2-icon-badge { grid-row:1/3; }

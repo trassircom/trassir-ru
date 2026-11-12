@@ -42,3 +42,15 @@
 @media(max-width:760px){.skud-page .sk-section{padding-block:46px}.skud-page .sk-equipment,.skud-page .sk-support{padding-top:0}.skud-page .sk-hero{padding-block:38px 48px;gap:30px}.skud-page .sk-hero figure{box-shadow:7px 7px 0 #f2f6f8}.skud-page .sk-tabs button{min-height:90px}.skud-page .sk-panel{padding:24px;gap:26px}.skud-page .sk-capabilities{grid-template-columns:1fr}.skud-page .sk-selection>.wrap{gap:24px}.skud-page .sk-support>.wrap{gap:0}}
 @media(max-width:480px){.skud-page .sk-tabs button{flex-direction:column;align-items:flex-start;justify-content:center;padding:16px;font-size:15px;gap:12px}.skud-page .sk-panel{padding:20px}.skud-page .sk-capabilities article{grid-template-columns:40px minmax(0,1fr);padding:20px;gap:0 14px}.skud-page .sk-capabilities .polish-icon-badge{width:40px;height:40px;border-radius:10px}.skud-page .sk-capabilities h3{font-size:20px}.skud-page .sk-products article{padding:14px}.skud-page .sk-products figure{padding:10px}.skud-page .sk-catalog{padding:24px}.skud-page .sk-system{padding:24px}}
 @media(prefers-reduced-motion:reduce){.skud-page .sk-products article{transition:none}}
+
+/* Whole-card links and ecosystem benefits copied from the cameras page. */
+.skud-page .sk-products article{position:relative}
+.skud-page .sk-products .sk-product-link{text-decoration:none}
+.skud-page .sk-products .sk-product-link::after{content:"";position:absolute;inset:0;border-radius:12px}
+.skud-page .sk-products .sk-product-link:focus-visible{outline:none}
+.skud-page .sk-products .sk-product-link:focus-visible::after{outline:3px solid #3688bc;outline-offset:4px}
+.skud-page .sk-support>.wrap{display:block}
+.skud-page .camera-ecosystem-copy{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:36px}
+.skud-page .camera-ecosystem-copy article{border-top:2px solid #b4c9d9;padding-top:22px}
+.skud-page .camera-ecosystem-copy h3{font-size:22px;line-height:1.25;margin-top:0}
+@media(max-width:700px){.skud-page .camera-ecosystem-copy{grid-template-columns:1fr;gap:24px}}

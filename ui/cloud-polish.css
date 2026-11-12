@@ -43,3 +43,24 @@
 @media(max-width:760px){.cloud-page .cloud-hero{padding-block:38px 44px;gap:30px}.cloud-page .cloud-hero figure{box-shadow:6px 6px 0 #f2f6f8}.cloud-page .cloud-facts{margin-bottom:46px;gap:28px 0;padding:26px}.cloud-page .cloud-facts dt{font-size:32px}.cloud-page .cloud-section{padding-block:46px}.cloud-page .cloud-features{grid-template-columns:1fr;gap:16px}.cloud-page .cloud-features li:nth-child(n){grid-column:auto;grid-row:auto;padding:22px;font-size:17px}.cloud-page .cloud-tariffs{grid-template-columns:1fr}.cloud-page .cloud-steps{gap:0;padding-top:0}.cloud-page .cloud-steps li{padding:9px 0 34px 72px;font-size:18px}.cloud-page .cloud-steps li:not(:last-child)::after{left:24px;top:48px;right:auto;bottom:0;width:1px;height:auto}.cloud-page .cloud-form-layout{gap:20px}}
 @media(max-width:540px){.cloud-page .cloud-facts{padding:24px 20px}.cloud-page .cloud-facts>div{padding-inline:14px}.cloud-page .cloud-facts dt{font-size:29px}.cloud-page .cloud-facts dd{font-size:14px}.cloud-page .cloud-ecosystem{padding-inline:20px}.cloud-page .cloud-diagram{grid-template-columns:1fr 26px 1fr}.cloud-page .cloud-diagram-node{padding:20px 8px}.cloud-page .cloud-diagram-node span{font-size:14px}.cloud-page .cloud-options-list{grid-template-columns:1fr}.cloud-page .cloud-tariff-group h3{padding:22px;font-size:23px}.cloud-page .cloud-tariff-row dt{padding:22px 22px 0}.cloud-page .cloud-tariff-row dd{padding:18px 22px 24px}.cloud-page .cloud-industry-grid img{aspect-ratio:16/9}.cloud-page .cloud-industry-grid h3{padding:22px}.cloud-page .cloud-features li{gap:14px}}
 @media(prefers-reduced-motion:reduce){.cloud-page .cloud-industry-grid article{transition:none}}
+
+/* Tariff grid and linked business sectors. */
+.cloud-page .cloud-plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.cloud-page .cloud-plan{min-width:0;border:1px solid #bcd1df;border-radius:12px;background:#fff;overflow:hidden}
+.cloud-page .cloud-plan-head{padding:24px;background:#e8f0f6;border-bottom:1px solid #cbdce8}
+.cloud-page .cloud-plan-head p{min-height:44px;margin:0 0 16px;font-size:15px;line-height:1.45;color:#526c80;max-width:225px}
+.cloud-page .cloud-plan-head h3{font-size:23px;line-height:1.25;font-weight:600;color:#174e79}
+.cloud-page .cloud-plan ul{display:grid;gap:18px;list-style:none;padding:26px 24px 30px;margin:0}
+.cloud-page .cloud-plan li{position:relative;padding-left:26px;font-size:16px;line-height:1.55}
+.cloud-page .cloud-plan li::before{content:"✓";position:absolute;left:0;top:0;color:#174e79;font-weight:700}
+.cloud-page .cloud-plan-paid{border-color:#174e79}
+.cloud-page .cloud-plan-paid .cloud-plan-head{background:#174e79;border-bottom-color:#174e79}
+.cloud-page .cloud-plan-paid .cloud-plan-head p{color:#e3edf5}
+.cloud-page .cloud-plan-paid .cloud-plan-head h3{color:#fff}
+.cloud-page .cloud-industry-card{display:flex;flex-direction:column;height:100%;color:inherit;text-decoration:none}
+.cloud-page .cloud-industry-card:focus-visible{outline:3px solid #2f7eb6;outline-offset:-3px;border-radius:12px}
+.cloud-page .cloud-industry-label{position:relative;flex:1}
+.cloud-page .cloud-industry-label h3{padding-right:48px!important}
+.cloud-page .cloud-industry-label svg{position:absolute;right:18px;bottom:23px;width:20px;height:20px;color:#174e79}
+@media(max-width:1000px) and (min-width:761px){.cloud-page .cloud-plan-head{padding:22px 18px}.cloud-page .cloud-plan-head h3{font-size:20px}.cloud-page .cloud-plan ul{padding:24px 18px}.cloud-page .cloud-plan-grid{gap:16px}}
+@media(max-width:760px){.cloud-page .cloud-plan-grid{grid-template-columns:1fr;gap:18px}.cloud-page .cloud-plan-head p{min-height:0;max-width:none;margin-bottom:12px}.cloud-page .cloud-plan-head{padding:22px}.cloud-page .cloud-plan ul{padding:24px 22px}}

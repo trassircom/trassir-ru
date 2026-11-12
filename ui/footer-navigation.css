@@ -1,0 +1,35 @@
+/* The complete previous menu, shared across every footer. */
+#site-footer-nav{display:block;width:min(1100px,calc(100% - 64px));margin:0 auto;padding:36px 0 40px;border-top:1px solid #dbe5ec;color:#25465f;font:14px/1.5 Arial,sans-serif;letter-spacing:normal;text-align:left;text-transform:none}
+#site-footer-nav *,#site-footer-nav *::before,#site-footer-nav *::after{box-sizing:border-box}
+#site-footer-nav :is(div,section,ul,li,h2,h3,a,span){margin:0;padding:0;font:inherit;color:inherit;text-transform:none;letter-spacing:normal}
+#site-footer-nav .tr-footer-grid{display:grid;grid-template-columns:.85fr 1.2fr 1.2fr 1fr;gap:36px}
+#site-footer-nav .tr-footer-column{display:flex;flex-direction:column;gap:28px;min-width:0}
+#site-footer-nav .tr-footer-title{margin-bottom:12px;font-size:16px;font-weight:700;line-height:1.4;color:#174e79;overflow-wrap:normal}
+#site-footer-nav .tr-footer-subtitle{margin-bottom:7px;font-size:13px;line-height:1.5;font-weight:700;color:#526c80}
+#site-footer-nav .tr-footer-category+.tr-footer-category{margin-top:22px}
+#site-footer-nav .tr-footer-links{display:flex;flex-direction:column;list-style:none;gap:0}
+#site-footer-nav li{display:block;list-style:none}
+#site-footer-nav li::before,#site-footer-nav a::before,#site-footer-nav a::after{display:none}
+#site-footer-nav a{position:static;display:inline-block;text-decoration:none;border:0;background:none;box-shadow:none;transition:color .15s}
+#site-footer-nav .tr-footer-links a,#site-footer-nav .tr-footer-links span{display:block;padding:6px 0;line-height:1.5}
+#site-footer-nav a:hover{color:#c8232b;text-decoration:underline;text-underline-offset:4px}
+#site-footer-nav a[aria-current=page]{color:#b91d26}
+#site-footer-nav .demo-disabled{color:#7b8b97;cursor:default}
+#site-footer-nav a:focus-visible{outline:2px solid #174e79;outline-offset:4px}
+/* Keep legacy contact/logo rows, without the old navigation's reserved space. */
+.app footer.footer[data-footer-navigation=legacy] .footer__inner .footer__logo-links{margin-bottom:0;padding-block:24px}
+.app footer.footer[data-footer-navigation=legacy] .footer__inner{padding-bottom:0}
+.app footer.footer[data-footer-navigation=legacy] .footer__inner .footer__logo-links .footer__logo{margin-bottom:0}
+.tr-footer-identity{display:block;padding-bottom:26px}
+@media(max-width:900px){
+ #site-footer-nav{width:calc(100% - 40px);padding:30px 0 34px}
+ #site-footer-nav .tr-footer-grid{grid-template-columns:1fr 1fr;gap:32px 40px}
+}
+@media(max-width:540px){
+ #site-footer-nav .tr-footer-grid{grid-template-columns:1fr;gap:28px}
+ #site-footer-nav .tr-footer-column{gap:28px}
+ #site-footer-nav .tr-footer-links a,#site-footer-nav .tr-footer-links span{padding:9px 0;font-size:15px}
+ #site-footer-nav .tr-footer-title{font-size:17px}
+ #site-footer-nav .tr-footer-subtitle{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){#site-footer-nav a{transition:none}}

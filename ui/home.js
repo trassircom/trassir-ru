@@ -90,22 +90,3 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', event => { event.preventDefault(); check(); });
   document.getElementById('home-request-button').addEventListener('click', check);
 });
-
-// Keep focus inside the open homepage menu; the shared script handles closing.
-document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('.home-page .demo-header');
-  if (!header) return;
-  const toggle = header.querySelector('.demo-toggle');
-  const menu = header.querySelector('.demo-nav');
-  header.addEventListener('click', event => {
-    const link = event.target.closest('a[href]');
-    if (link && !menu.hidden && !menu.contains(link)) toggle.click();
-  });
-  header.addEventListener('keydown', event => {
-    if (event.key !== 'Tab' || menu.hidden) return;
-    const links = [...menu.querySelectorAll('a[href]')];
-    const last = links[links.length - 1];
-    if (event.shiftKey && event.target === toggle) { event.preventDefault(); last?.focus(); }
-    else if (!event.shiftKey && event.target === last) { event.preventDefault(); toggle.focus(); }
-  });
-});

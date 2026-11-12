@@ -1,0 +1,48 @@
+/* Camera production section, isolated from the two homepage style scopes. */
+:is(#quality,#production).home-production{width:min(1100px,calc(100% - 64px));margin-inline:auto;padding:48px 0;background:#fff;color:#25465f;font:16px/1.6 Arial,sans-serif}
+:is(#quality,#production).home-production *{min-width:0}
+:is(#quality,#production).home-production :is(h2,h3,h4,p){margin:0}
+:is(#quality,#production).home-production :is(h2,h3,h4){color:#174e79;letter-spacing:-.025em;text-transform:none;text-wrap:wrap;overflow-wrap:break-word}
+:is(#quality,#production).home-production h2{font-size:32px;font-weight:600;line-height:1.2;margin-bottom:24px}
+:is(#quality,#production).home-production h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:13px}
+:is(#quality,#production).home-production h4{font-size:20px;font-weight:700;line-height:1.3;margin-bottom:14px}
+:is(#quality,#production).home-production .section-label{display:flex;align-items:center;gap:12px;color:#647e91;font-size:12px;letter-spacing:1.8px;font-weight:700;text-transform:uppercase;margin-bottom:25px}
+:is(#quality,#production).home-production .section-label::before{content:'';width:24px;height:2px;flex-shrink:0;background:#d52228}
+:is(#quality,#production).home-production .production-copy p{line-height:1.65}
+:is(#quality,#production).home-production .about-section-lead{font-size:20px;margin-bottom:32px}
+:is(#quality,#production).home-production .about-production-layout{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:56px}
+:is(#quality,#production).home-production figure{margin:0;border-radius:8px;overflow:hidden}
+:is(#quality,#production).home-production figure img{display:block;width:100%;height:auto;aspect-ratio:1.7;object-fit:cover;border-radius:0;filter:none}
+:is(#quality,#production).home-production .about-production-points article{display:flex;gap:20px;align-items:flex-start;margin-bottom:28px}
+:is(#quality,#production).home-production .about-icon{display:block;width:30px;height:30px;color:#174e79;flex-shrink:0;margin-top:3px}
+:is(#quality,#production).home-production .about-text-link{display:inline-flex;gap:18px;align-items:center;padding:10px 0;border-bottom:1px solid #98b3c7;color:#25465f;text-decoration:none;font:16px/1.6 Arial,sans-serif}
+:is(#quality,#production).home-production .about-text-link .about-icon{width:20px;height:20px;margin:0}
+:is(#quality,#production).home-production .about-production-features{margin-top:42px}
+:is(#quality,#production).home-production .about-production-features>p{max-width:1050px;font-size:17px}
+:is(#quality,#production).home-production .about-process-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px;margin-top:30px}
+:is(#quality,#production).home-production .about-process-list article{padding-top:22px;border-top:1px solid #aec4d4}
+:is(#quality,#production).home-production .quality{margin-top:32px;border-top:1px solid #d4e0e9;padding-top:28px}
+:is(#quality,#production).home-production .quality ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;list-style:none;padding:0;margin:28px 0 0}
+:is(#quality,#production).home-production .quality li{display:flex;align-items:flex-start;gap:14px;background:#f2f6f8;border:0;border-radius:8px;padding:22px}
+:is(#quality,#production).home-production .quality li span{flex-shrink:0;font-size:20px;line-height:1.3;color:#d52228}
+:is(#quality,#production).home-production .quality li p{font-size:15px;line-height:1.6}
+@media(max-width:1050px){:is(#quality,#production).home-production .about-production-layout{gap:30px}}
+@media(max-width:1000px){
+ :is(#quality,#production).home-production{width:calc(100% - 48px);padding-block:64px}
+ :is(#quality,#production).home-production h2{font-size:clamp(28px,2.9vw,40px)}
+ :is(#quality,#production).home-production .quality{margin-top:44px;padding-top:36px}
+ :is(#quality,#production).home-production .quality ol{margin-top:35px;gap:24px}
+}
+@media(max-width:760px){
+ :is(#quality,#production).home-production .about-production-layout{grid-template-columns:1fr}
+ :is(#quality,#production).home-production .about-process-list{gap:24px}
+}
+@media(max-width:700px){
+ :is(#quality,#production).home-production{width:calc(100% - 40px);padding-block:44px}
+ :is(#quality,#production).home-production .quality ol{grid-template-columns:1fr}
+}
+@media(max-width:540px){
+ :is(#quality,#production).home-production .about-process-list{grid-template-columns:1fr}
+ :is(#quality,#production).home-production .about-section-lead{font-size:18px}
+ :is(#quality,#production).home-production h3{font-size:22px}
+}

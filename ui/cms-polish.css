@@ -18,6 +18,8 @@
 .cms-page .cms-central strong{font-size:27px}
 .cms-page .cms-server{border-radius:8px;border-color:#b5cddd;padding:24px 14px}
 .cms-page .cms-cameras span{border-radius:6px;background:#fff;padding-block:12px}
+.cms-page .cms-diagram .cms-node-icon{display:block;width:32px;height:32px;margin:0 auto 12px;color:inherit;flex-shrink:0}
+.cms-page .cms-cameras .cms-node-icon{width:24px;height:24px;margin-bottom:8px}
 .cms-page .cms-cases .wrap>article{padding:30px 28px;margin-top:18px;border:1px solid #d7e3ec;border-radius:12px;gap:46px;background:#fff}
 .cms-page .cms-cases .wrap>article:first-of-type{margin-top:0}
 .cms-page .cms-cases h3{font-size:23px;line-height:1.35;padding-left:18px;border-left:3px solid #d52228}

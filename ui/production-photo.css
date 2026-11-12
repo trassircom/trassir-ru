@@ -1,0 +1,3 @@
+/* The corrected production photograph already has neutral exposure. */
+.page-refined main .production-copy figure img.production-photo-natural,
+.about-page main #production .production-copy figure img.production-photo-natural{filter:none}

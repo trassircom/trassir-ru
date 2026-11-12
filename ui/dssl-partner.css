@@ -1,0 +1,49 @@
+/* A compact purchase/partner introduction for the two current homepages. */
+#buy.dssl-partner{width:min(1100px,calc(100% - 64px));margin:0 auto 36px;padding:0;color:#25465f;background:#f2f6f8;border:1px solid #dbe5ec;border-radius:12px;overflow:hidden;font-size:16px;line-height:1.55}
+#buy .dssl-partner-inner{display:grid;grid-template-columns:minmax(0,1fr) 245px;align-items:center;gap:40px;padding:30px 32px}
+#buy .dssl-partner-copy{min-width:0}
+#buy .dssl-partner-label{display:flex;align-items:center;gap:10px;margin:0 0 10px;font-size:12px;line-height:1.5;font-weight:600;color:#526c80;letter-spacing:.035em;text-transform:uppercase}
+#buy .dssl-partner-label::before{content:'';width:22px;height:2px;flex:none;background:#d52228}
+#buy #dssl-partner-title{margin:0 0 14px;color:#174e79;font-size:28px;line-height:1.2;font-weight:650;letter-spacing:-.025em;text-transform:none;text-wrap:balance}
+#buy .dssl-partner-copy>p:not(.dssl-partner-label){margin:0;font-size:15px;line-height:1.6;color:#25465f}
+#buy .dssl-partner-copy>p+p{margin-top:9px}
+#buy .dssl-partner-button{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:46px;margin-top:22px;padding:12px 17px;border:1px solid #174e79;border-radius:4px;background:#174e79;color:#fff;font-family:inherit;font-size:14px;line-height:1.4;font-weight:600;text-align:center;text-decoration:none;transition:background .18s,border-color .18s}
+#buy .dssl-partner-button svg{width:18px;height:18px;flex:none}
+#buy .dssl-partner-button:hover{background:#103b5d;border-color:#103b5d;color:#fff}
+#buy .dssl-partner-button:focus-visible{outline:3px solid #3289c4;outline-offset:4px}
+#buy .dssl-partner-roles{display:grid;gap:24px;margin:0;padding:6px 0 6px 28px;border-left:1px solid #cbd9e4}
+#buy .dssl-partner-role{margin:0;padding:0}
+#buy .dssl-partner-role dt{margin:0 0 5px;padding:0;color:#174e79;font-size:24px;line-height:1.2;font-weight:750;letter-spacing:-.035em}
+#buy .dssl-partner-role dd{margin:0;padding:0;color:#526c80;font-size:14px;line-height:1.5}
+#buy .dssl-partner-benefits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 24px;margin:0 32px 22px;padding:22px 0 0;border-top:1px solid #cbd9e4;list-style:none}
+#buy .dssl-partner-benefits>li{display:flex;align-items:flex-start;gap:10px;min-width:0;margin:0;padding:0;color:#25465f;font-size:14px;font-weight:500;line-height:1.45}
+#buy .dssl-benefit-icon{display:block;flex:none;width:24px;height:24px;color:#174e79}
+#buy .dssl-partner-actions{padding:0 32px 26px}
+#buy .dssl-partner-actions .dssl-partner-button{margin-top:0}
+@media(max-width:1000px){
+ #buy.dssl-partner{width:calc(100% - 48px)}
+ #buy .dssl-partner-inner{grid-template-columns:minmax(0,1fr) 200px;gap:28px;padding:26px}
+ #buy #dssl-partner-title{font-size:26px}
+ #buy .dssl-partner-roles{padding-left:22px}
+ #buy .dssl-partner-benefits{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px;margin-inline:26px}
+ #buy .dssl-partner-actions{padding-inline:26px}
+}
+@media(max-width:720px){
+ #buy.dssl-partner{width:calc(100% - 40px);margin-bottom:28px}
+ #buy .dssl-partner-inner{grid-template-columns:1fr;gap:24px;padding:24px}
+ #buy .dssl-partner-roles{grid-template-columns:1fr 1fr;gap:22px;padding:22px 0 0;border-left:0;border-top:1px solid #cbd9e4}
+ #buy .dssl-partner-role dt{font-size:21px}
+ #buy .dssl-partner-benefits{margin:0 24px 24px;padding-top:20px}
+ #buy .dssl-partner-actions{padding:0 24px 24px}
+}
+@media(max-width:560px){#buy .dssl-partner-benefits{grid-template-columns:1fr;gap:12px}}
+@media(max-width:420px){
+ #buy .dssl-partner-inner{padding:22px 20px}
+ #buy #dssl-partner-title{font-size:25px;text-wrap:initial}
+ #buy .dssl-partner-button{width:100%;gap:10px;padding-inline:10px}
+ #buy .dssl-partner-roles{gap:16px}
+ #buy .dssl-partner-role dd{font-size:13px}
+ #buy .dssl-partner-benefits{margin-inline:20px;margin-bottom:22px}
+ #buy .dssl-partner-actions{padding:0 20px 22px}
+}
+@media(prefers-reduced-motion:reduce){#buy .dssl-partner-button{transition:none}}

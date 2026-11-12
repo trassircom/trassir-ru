@@ -16,8 +16,8 @@
 .recorders-page .rec-features article{border-top:1px solid #bed1df;padding-top:24px}
 .recorders-page .rec-features svg{width:48px;height:48px;padding:11px;border-radius:12px;background:#e8f0f6;color:var(--blue)}
 .recorders-page .rec-features h3{min-height:0;font-size:18px}
-.recorders-page .rec-task-layout{gap:20px 26px;grid-template-columns:1fr .7fr 1fr;align-items:stretch}
-.recorders-page .rec-task{background:#fff;border:1px solid #dce6ee;border-radius:12px;padding:24px}
+.recorders-page .rec-task-layout{gap:20px 26px;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+.recorders-page .rec-task{grid-column:auto;grid-row:auto;background:#fff;border:1px solid #dce6ee;border-radius:12px;padding:24px}
 .recorders-page .rec-task .polish-icon-badge{margin-bottom:18px}
 .recorders-page .rec-task h3{font-size:21px}
 .recorders-page .rec-task-device{padding:18px;border-radius:50%;background:#e6eef4;aspect-ratio:1;display:flex;align-items:center}
