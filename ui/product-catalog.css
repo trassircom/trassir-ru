@@ -1,0 +1,20 @@
+/* Camera catalog block reused on the three hardware pages. */
+body.page-refined main .product-catalog{background:#edf3f7;color:var(--ink);padding:45px 0}
+body.page-refined main .product-catalog .catalog-inner{display:flex;align-items:center;justify-content:space-between;gap:50px}
+body.page-refined main .product-catalog .catalog-inner>div{min-width:0}
+body.page-refined main .product-catalog h2{font-size:clamp(28px,2.9vw,40px);font-weight:600;line-height:1.2;letter-spacing:-.025em;margin:0 0 14px;color:var(--blue)}
+body.page-refined main .product-catalog p{max-width:720px}
+body.page-refined main .product-catalog .section-label{font-size:12px;letter-spacing:1.8px;color:#647e91;gap:12px;margin-bottom:15px}
+body.page-refined main .product-catalog .section-label::before{width:24px;height:2px}
+body.page-refined main .product-catalog .button{flex-shrink:0;white-space:nowrap}
+body.skud-page main .product-catalog,body.network-page main .product-catalog{margin-bottom:64px}
+@media(min-width:1001px){
+ body.product-compact main .product-catalog{padding-block:32px}
+ body.product-compact main .product-catalog h2{font-size:32px;margin-bottom:24px}
+ body.product-compact.skud-page main .product-catalog,body.product-compact.network-page main .product-catalog{margin-bottom:48px}
+}
+@media(max-width:760px){body.skud-page main .product-catalog,body.network-page main .product-catalog{margin-bottom:46px}}
+@media(max-width:700px){
+ body.page-refined main .product-catalog .catalog-inner{display:block}
+ body.page-refined main .product-catalog .button{margin-top:24px}
+}

@@ -71,3 +71,71 @@
 @media(max-width:1050px){.production-hero{gap:35px}.production-hero h1{font-size:48px}.production-principles{gap:30px}.production-process{grid-template-columns:1fr 1fr;gap:38px 28px}.production-clean,.production-system{gap:40px}.production-page main h2{font-size:34px}.production-lines article{padding:25px;display:block}.production-lines span{display:block;margin-bottom:18px}.production-tests{gap:18px}.production-tests article>div:last-child{padding:24px}.production-tour-cards{gap:18px}.production-page .production-tour-cards h3{font-size:20px;padding:23px}}
 @media(max-width:750px){.production-page .section{padding-block:64px}.production-hero{grid-template-columns:1fr;padding-top:36px;gap:30px}.production-hero h1{font-size:46px;max-width:500px}.production-hero .production-label{margin-bottom:22px}.production-video{min-height:300px}.production-highlights{gap:20px}.production-highlights p{font-size:16px;padding-left:14px}.production-principles{grid-template-columns:1fr;gap:28px}.production-principles article{display:grid;grid-template-columns:44px 1fr;gap:8px 20px}.production-principles p{grid-column:2}.production-number{grid-row:1/3;font-size:29px}.production-clean,.production-system{grid-template-columns:1fr;gap:32px}.production-clean>.production-placeholder{min-height:320px}.production-tests{grid-template-columns:1fr}.production-tests article{display:grid;grid-template-columns:1fr 1.2fr}.production-tests .production-placeholder{border:0;border-right:1px solid #d3dfe7}.production-lines{gap:15px}.production-page .production-lines h3{font-size:19px}.production-lines article{padding:20px}.production-system>.production-placeholder{min-height:300px}.production-tour-cards{grid-template-columns:1fr}.production-tour-cards article{display:grid;grid-template-columns:1fr 1.2fr}.production-tour-cards h3{align-self:center}.production-tour-cards .production-placeholder{min-height:180px;border:0;border-right:1px solid #d3dfe7}}
 @media(max-width:480px){.production-page .wrap{width:calc(100% - 40px)}.production-page main h2{font-size:30px}.production-breadcrumbs{gap:8px;font-size:12px}.production-hero h1{font-size:42px}.production-lead{font-size:23px}.production-label{font-size:11px;letter-spacing:1px}.production-highlights{grid-template-columns:1fr;padding-block:26px;gap:22px}.production-highlights p{font-size:17px}.production-intro{font-size:17px}.production-process{grid-template-columns:1fr;gap:34px}.production-process .production-placeholder{min-height:210px}.production-clean>.production-placeholder{min-height:270px}.production-conditions{gap:8px}.production-lines{grid-template-columns:1fr}.production-lines article{display:flex;gap:25px;align-items:center}.production-lines span{margin:0}.production-page .production-lines h3{font-size:22px}.production-tests article,.production-tour-cards article{display:block}.production-tests .production-placeholder,.production-tour-cards .production-placeholder{border:0;border-bottom:1px solid #d3dfe7;min-height:220px}.production-page .production-tour-cards h3{font-size:23px;padding:26px}.production-tour>.wrap>.button{width:100%;min-width:0}#tour-dialog{padding:38px 25px 28px}#tour-dialog h2{font-size:28px}}
+
+/* Compact proportions aligned with the partner program and product pages. */
+.production-page main .wrap,.production-page .camera-footer>.wrap{width:min(1100px,calc(100% - 64px));margin-inline:auto}
+.production-page .section{padding-block:48px}
+.production-page main h2{font-size:32px;line-height:1.18;letter-spacing:-.6px;margin-bottom:24px}
+.production-page main h3{font-size:21px;line-height:1.3}
+.production-breadcrumbs{font-size:12px;padding-top:23px}
+.production-label{margin-bottom:20px}
+.production-hero{gap:40px;padding-block:44px}
+.production-hero>div{min-width:0}
+.production-hero h1{font-size:42px;line-height:1.1;letter-spacing:-1.2px;margin-bottom:22px}
+.production-lead{font-size:21px;line-height:1.4;margin-bottom:18px}
+.production-hero .button{margin-top:24px}
+.production-page main .button{min-height:48px;padding:12px 20px}
+.production-video{min-height:300px;padding:28px;gap:20px}
+.production-video svg{width:60px;height:60px}
+.production-video span{font-size:17px}
+.production-intro{font-size:16px;line-height:1.65;max-width:850px;margin-bottom:28px}
+.production-principles{gap:28px}
+.production-principles article{padding-top:22px}
+.production-number{font-size:28px;margin-bottom:18px}
+.production-process{gap:24px}
+.process-number{font-size:22px;gap:14px;margin-bottom:18px}
+.production-placeholder{padding:20px;gap:12px;min-height:170px}
+.production-placeholder>p{font-size:15px}
+.production-process .production-placeholder{margin-bottom:20px}
+.production-page .production-process h3{font-size:20px}
+.production-tests{gap:22px}
+.production-tests .production-placeholder{min-height:180px}
+.production-tests article>div:last-child{padding:24px}
+.production-tour-cards{gap:22px;margin-bottom:28px}
+.production-tour-cards .production-placeholder{min-height:180px}
+.production-page .production-tour-cards h3{font-size:21px;padding:24px}
+.production-tour>.wrap>.button{min-width:240px;min-height:48px}
+@media(max-width:1000px){
+ .production-page main .wrap,.production-page .camera-footer>.wrap{width:calc(100% - 48px)}
+ .production-hero{gap:28px}.production-hero h1{font-size:38px}
+ .production-lead{font-size:20px}.production-process{gap:28px 24px}
+ .production-tests article>div:last-child{padding:22px}
+ .production-page .production-tour-cards h3{font-size:20px;padding:22px}
+}
+@media(max-width:750px){
+ .production-page .section{padding-block:40px}
+ .production-hero{padding-block:32px;gap:28px}
+ .production-hero .production-label{margin-bottom:20px}
+ .production-video{min-height:240px}
+ .production-principles{gap:24px}
+ .production-principles article{grid-template-columns:32px 1fr;gap:8px 16px}
+ .production-number{font-size:26px;margin-bottom:0}
+ .production-tests .production-placeholder,.production-tour-cards .production-placeholder{min-height:170px}
+}
+@media(max-width:600px){
+ .production-page main .wrap,.production-page .camera-footer>.wrap{width:calc(100% - 40px)}
+ .production-page .section{padding-block:36px}
+ .production-page main h2{font-size:28px;letter-spacing:-.5px;margin-bottom:20px}
+ .production-hero h1{font-size:36px;letter-spacing:-1px}
+ .production-breadcrumbs{font-size:11px;padding-top:20px}
+ .production-intro{font-size:16px;margin-bottom:24px}
+ .production-video{min-height:220px}
+ .production-process{gap:28px 20px}
+}
+@media(max-width:480px){
+ .production-lead{font-size:20px}
+ .production-process .production-placeholder{min-height:180px}
+ .production-tests .production-placeholder,.production-tour-cards .production-placeholder{min-height:180px}
+ .production-page .production-tour-cards h3{font-size:21px;padding:22px}
+ .production-tour>.wrap>.button{min-width:0}
+}
